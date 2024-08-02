@@ -145,8 +145,8 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     margin-left: 1250px;
     margin-top: -240px;
-    position: relative; /* Ensure it's positioned relative to its normal position */
-    z-index: 1000; /* Ensure it is on top of other elements */
+    position: relative; 
+    z-index: 1000; 
 }
 
 .deconnexion-button img {
@@ -773,7 +773,7 @@ body.blurred {
     margin-left: 60px;
     margin-top: -50px;
     display: flex;
-    gap: 30px; /* Adjust the gap as needed */
+    gap: 30px; 
 }
 
 .btn-outline_3, .btn-solid_3 {
@@ -951,7 +951,7 @@ body.blurred {
     border-radius: 35px;
     overflow: hidden;
     font-family: 'Poppins', sans-serif;
-    opacity: 0; /* Start with invisible */
+    opacity: 0; 
     animation: fadeInPopup 0.5s forwards, slideUpPopup 0.5s forwards;
 }
 
@@ -1318,7 +1318,7 @@ body.blurred {
     padding: 10px;
     border-radius: 35px; 
     gap: 10px;
-   /* box-shadow:2px2px 2px 4px rgba(0, 0, 0, 0.05); */
+
 }
 
 .available {
@@ -1350,7 +1350,7 @@ body.blurred {
     padding: 10px;
     border-radius: 35px; 
     
-   /* box-shadow:2px2px 2px 4px rgba(0, 0, 0, 0.05); */
+
 }
 
 .client-list-header, .client-list-item {
@@ -1446,3 +1446,380 @@ body.blurred {
 
 
 
+  .unique-client-popup-content {
+    margin-left: 100px;
+    margin-top: 10px;
+}
+
+.unique-no-client-message {
+    margin-left: 10px;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+}
+
+.unique-client-list-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: -25px;
+    padding: 10px;
+    border-radius: 35px;
+    gap: 10px;
+}
+
+.unique-client-list-header, .unique-client-list-item {
+    display: flex;
+    padding: 15px 0;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.unique-client-email-header {
+    margin-right: 30px;
+}
+
+.unique-client-phone-header {
+    margin-left: 10px;
+}
+
+.unique-client-actions-header {
+    margin-left: -5px;
+}
+
+.unique-client-list-header {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+    color: #bfbbbb;
+}
+
+.unique-client-list-item {
+    font-family: 'Poppins', sans-serif;
+   
+}
+
+.unique-client-list-header div, .unique-client-list-item div {
+    flex: 1;
+    padding: 0 10px;
+}
+
+.unique-client-phone {
+    margin-left: 60px;
+}
+
+.unique-client-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.unique-company-action-buttons {
+    display: flex;
+    align-items: center;
+    margin-left: -40px;
+}
+
+.unique-action-button {
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    background-color: #ffc7a7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+}
+
+.unique-action-button img {
+    width: 20px;
+    height: 20px;
+}
+
+.unique-edit-button {
+    background-color: #e8f2ff;
+}
+
+.unique-delete-button {
+    background-color: #ffddc9;
+}
+
+.unique-tag {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    color: #fff;
+    margin-right: 5px;
+}
+
+.unique-tag-client {
+    background-color: #ffca81;
+    margin-right: 35px;
+}
+
+.unique-livreur-popup-inner-content {
+    margin-left: 100px;
+    overflow-x: hidden; 
+}
+
+.unique-no-livreur-message {
+    margin-left: 10px;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+}
+
+.unique-livreur-list-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+    border-radius: 35px;
+    overflow-x: hidden; 
+}
+
+.unique-livreur-list-header {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+    color: #bfbbbb;
+    margin-top: 15px;
+    padding-bottom: 0;
+    gap: 5px; 
+   
+}
+
+.unique-header-item {
+    flex: 1;
+    text-align: center;
+   
+}
+
+.unique-livreur-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    margin-left: -50px;
+    margin-top: 10px;
+}
+
+.unique-livreur-list-item > div {
+    flex: 1;
+    text-align: center;
+    margin: 0; 
+    padding: 0;
+}
+
+.unique-avatar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.unique-avatar-img {
+    width: 30px;
+    height: 35px;
+}
+
+.unique-livreur-name,
+.unique-livreur-email,
+.unique-livreur-phone,
+.unique-livreur-cin,
+.unique-livreur-vehicle,
+.unique-livreur-availability {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.unique-availability-status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    color: #fff;
+    text-align: center;
+}
+
+.unique-available {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.unique-not-available {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.unique-livreur-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.unique-action-buttons-liv {
+    display: flex;
+    gap: 5px;
+    margin-left: -40px;
+}
+
+.unique-action-button {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    background-color: #ffc7a7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+}
+
+.unique-action-button img {
+    width: 20px;
+    height: 20px;
+}
+
+.unique-edit-button {
+    background-color: #e8f2ff;
+}
+
+.unique-delete-button {
+    background-color: #ffddc9;
+}
+
+
+
+.unique-company-popup-inner-content {
+    margin-left: 100px;
+    margin-top: 15px;
+  }
+  
+  .unique-no-company-message {
+    margin-left: 10px;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+  }
+  
+  .unique-company-list-container {
+    display: flex;
+    flex-direction: column;
+    
+    padding: 10px;
+    border-radius: 35px;
+    overflow-x: hidden;
+    width: calc(100% - 20px);
+  }
+  
+  .unique-company-list-header {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+    color: #bfbbbb;
+    padding-bottom: 0;
+    gap: 0;
+    margin: 0; 
+    padding: 0; 
+  }
+  
+  .unique-header-item {
+    flex: 1;
+    text-align: center;
+    margin: 0; 
+    padding: 0; 
+  }
+  
+  .unique-company-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    margin-left: -55px;
+    margin-top: 10px;
+  }
+  
+  .unique-company-list-item > div {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .unique-avatar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .unique-avatar-img {
+    width: 30px;
+    height: 35px;
+  }
+  
+  .unique-company-name,
+  .unique-company-email,
+  .unique-company-phone,
+  .unique-company-address,
+  .unique-company-hours {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .unique-company-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .unique-action-buttons {
+    display: flex;
+    gap: 5px;
+  }
+  
+  .unique-action-button {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    background-color: #ffc7a7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+  }
+  
+  .unique-action-button img {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .unique-edit-button {
+    background-color: #e8f2ff;
+  }
+  
+  .unique-delete-button {
+    background-color: #ffddc9;
+  }
+ 
+  
+  .unique-company-opening-hour {
+    background-color: #e0f7fa; 
+    border-radius: 20px;
+    padding: 2px 5px;
+    margin: 0 2px;
+  }
+  
+  .unique-company-closing-hour {
+    background-color: #ffddd6; 
+    border-radius: 20px;
+    padding: 2px 5px;
+    margin: 0 2px;
+  }

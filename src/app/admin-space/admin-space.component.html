@@ -23,7 +23,7 @@
     </header>
     
     <div class="content">
-        <div class="icon-container">
+        <div class="icon-container" (click)="showCompanyPopup()">
             <div class="icon">
                 <img style="margin-top: 5px; margin-right: 5px;" src="https://freepngimg.com/save/139206-food-plate-top-snack-view/528x525" alt="Icon">
             </div>
@@ -355,81 +355,87 @@
 </div>
 
 <div class="backdrop" *ngIf="isPopupClientVisible" (click)="hidePopupClient()"></div>
+
 <!-- Popup for Displaying Client List -->
-<div class="client-list-modal-unique" *ngIf="isClientListPopupVisible">
-  <div class="client-list-popup-content-unique">
-    <div class="popup-header-unique" style="margin: 20px;">
-      <div class="left-section-unique">
-        <div class="title-client-unique" style=" font-size: medium; font-weight:500; margin-left: 30px; font-size:23px;">Gestion des Clients</div>
+<div class="client-list-modal" *ngIf="isClientListPopupVisible">
+  <div class="client-list-popup-content">
+    <div class="popup-header" style="margin: 20px;">
+      <div class="left-section">
+        <div class="title_client" style=" font-size: medium; font-weight:500; margin-left: 30px; font-size:23px;">Gestion des Clients</div>
       </div>
-      <div class="right-section-unique">
-        <div class="search-container-unique">
-          <input type="text" class="search-input-unique" placeholder="barre de recherche" style="padding-left: 60px; font-family: 'Poppins'; font-weight: lighter;">
-          <img src="assets/loupe.png" alt="Search Icon" class="search-icon-unique" style="padding-left: 10px;">
+      <div class="right-section">
+        <div class="search-container">
+          <input type="text" class="search-input" placeholder="barre de recherche" style="padding-left: 60px; font-family: 'Poppins'; font-weight: lighter;">
+          <img src="assets/loupe.png" alt="Search Icon" class="search-icon" style="padding-left: 10px;">
         </div>
-        <div class="top-icons-unique">
-          <img src="assets/moon-star.png" alt="Night Mode" class="icon-clients-unique">
-          <img src="assets/bell.png" alt="Notifications" class="icon-clients-unique">
+        <div class="top-icons">
+          <img src="assets/moon-star.png" alt="Night Mode" class="icon_clients">
+          <img src="assets/bell.png" alt="Notifications" class="icon_clients">
         </div>
-        <div class="user-profile-unique"></div>
+        <div class="user-profile"></div>
       </div>
     </div>
 
-    <div class="vertical-nav-unique" style="margin-top: 45px;">
-      <div class="nav-icon-unique" (click)="hideClientPopup()">
+
+    <div class="vertical-nav" style="margin-top: 45px;">
+      <div class="nav-icon" (click)="hideClientPopup()">
           <img src="assets/home_client.png" alt="Home">
       </div>
-      <div class="nav-icon-unique" (click)="logout()">
+      <div class="nav-icon" (click)="logout()">
           <img src="assets/logout.png" alt="Logout">
       </div>
-    </div>
+    
+  </div>
 
-    <div class="section-header-unique">
-      <div class="title-client2-unique" style=" font-weight: 500; font-style: normal; margin-left: 70px;">Information Clients</div>
-      <div class="action-buttons-unique" style="justify-content: flex-end; margin-top: -30px; margin-right: 40px;">
-        <button class="btn-add-unique" style="margin-right: 15px;" (click)="showPopupClient()" (click)="hideClientPopup()">
-          <img src="assets/plus.png" style="width: 25px; height: 25px; color: #96aac4; font-family: sans-serif; font-weight: 500;" alt="Add Client">add client
+
+    <div class="section-header">
+      <div class="title_client2" style=" font-weight: 500; font-style: normal; margin-left: 70px;">Information Clients</div>
+      <div class="action-buttons" style="justify-content: flex-end; margin-top: -30px; margin-right: 40px;">
+        <button class="btn btn-add" style="margin-right: 15px;" (click)="showPopupClient()" (click)="hideClientPopup()">
+          <img src="assets/plus.png" style="width: 25px; height: 25px; color: #96aac4; font-family: sans-serif; font-weight: 500;" alt="Add Client" >add client
         </button>
-        <button class="btn-icon-unique">
+        <button class="btn btn-icon">
           <img src="assets/edition.png" alt="Edit">
         </button>
-        <button class="btn-icon-unique">
+        <button class="btn btn-icon">
           <img src="assets/changer.png" alt="Filter">
         </button>
       </div>
     </div>
-    <div class="client-list-popup-inner-content-unique" style="margin-left: 100px; margin-top: 10px;">
-      <div *ngIf="clients.length === 0" style="margin-left: 10px;">Aucun client enregistré.</div>
-      <div class="client-list-container-unique">
-          <div class="client-list-header-unique">
+    <div class="unique-client-popup-content">
+      <div *ngIf="clients.length === 0" class="unique-no-client-message">Aucun client enregistré.</div>
+      <div class="unique-client-list-container">
+          <div class="unique-client-list-header">
               <div>Nom</div>
-              <div style="margin-right: 20px;">Adresse Email</div>
-              <div style="margin-left:20px;">Téléphone</div>
-              <div style="margin-left: 10px;">Adresse</div>
-              <div style="margin-right: 30px;">Actions</div>
+              <div class="unique-client-email-header" style="margin-left: 20px;">Adresse Email</div>
+              <div class="unique-client-phone-header" style="margin-right: 15px;" >Téléphone</div>
+              <div style="margin-right : 5px ;">Adresse</div>
+              <div class="unique-client-actions-header" style="margin-right : 30px ;">Actions</div>
           </div>
-          <div *ngFor="let client of clients" class="client-list-item-unique">
+          <div *ngFor="let client of clients" class="unique-client-list-item">
               <div>{{ client.name }}</div>
               <div>{{ client.email }}</div>
-              <div style="margin-left: 60px;">{{ client.phone }}</div>
+              <div class="unique-client-phone">{{ client.phone }}</div>
               <div>{{ client.address }}</div>
-              <div>
-                <div class="action-buttons-unique">
-                    <span class="tag-client-unique">Client</span>
-                    <button class="action-button-unique edit-button-unique">
+              <div class="unique-client-actions">
+                <div class="unique-action-buttons">
+                    <span class="unique-tag unique-tag-client">Client</span>
+                    <button class="unique-action-button unique-edit-button">
                         <img src="assets/user-edit.png" alt="Edit">
                     </button>
-                    <button class="action-button-unique delete-button-unique">
+                    <button class="unique-action-button unique-delete-button">
                         <img src="assets/delete.png" alt="Delete">
                     </button>
                 </div>
-            </div>
+              </div>
           </div>
       </div>
     </div>
+    
+  
   </div>
 </div>
-<div class="client-list-backdrop-unique" *ngIf="isClientListPopupVisible" (click)="hideClientPopup()"></div>
+<div class="client-list-backdrop" *ngIf="isClientListPopupVisible" (click)="hideClientPopup()"></div>
 
 
 
@@ -477,54 +483,133 @@
         </button>
       </div>
     </div>
-    <div class="client-list-popup-inner-content" style="margin-left: 100px;  ">
-      <div *ngIf="livreurs.length === 0" style="margin-left: 10px;">Aucun livreur enregistré.</div>
-      <div class="getClient-list-container">
-        <div class="client-list-header" >
-          <div>Avatar</div>
-          <div style="margin-left: 0px;">Nom</div>
-          <div style="margin-left: 20px;">Email</div>
-          <div style="margin-left: 50px;">Tel</div>
-          <div style="margin-left: -20px;">CIN</div>
-          <div style="margin-left:  20px;">auto</div>
-          <div style="margin-left: -20px;">Disp</div>
-          
-        </div>
-        <div *ngFor="let livreur of livreurs" class="livreur-list-item" >
-          
-          <div style="margin-left: -25px; margin-top: 10px; "  class="avatar-container" >
-          
-            <img [src]="livreur.user.avatar" alt="Avatar" class="avatar-img" (error)="onImgError($event)">
-          
+    <div class="unique-livreur-popup-inner-content">
+      <div *ngIf="livreurs.length === 0" class="unique-no-livreur-message">Aucun livreur enregistré.</div>
+      <div class="unique-livreur-list-container">
+          <div class="unique-livreur-list-header">
+              <div>Avatar</div>
+              <div class="unique-livreur-name-header" style="margin-left: 0px;">Nom</div>
+              <div class="unique-livreur-email-header" style="margin-left: 10px;">Email</div>
+              <div class="unique-livreur-phone-header" style="margin-left: 0px;">Tel</div>
+              <div class="unique-livreur-cin-header" style="margin-left: 10px;">CIN</div>
+              <div class="unique-livreur-vehicle-header" style="margin-right: 10px;">Auto</div>
+              <div class="unique-livreur-availability-header" style="margin-right: 200px;">Disp</div>
           </div>
-
-          <div style="margin-left: 30px;" >{{ livreur.user?.name }}</div>
-          <div style="margin-left: 20px;">{{ livreur.user?.email }}</div>
-          <div>{{ livreur.user?.phone }}</div>
-          <div  >{{ livreur.cin }}</div>
-          <div style="margin-left: 25px;">{{ livreur.vehicleType }}</div>
-          <div style="margin-top: -5px;">
-          <div class="list-item" [ngClass]="{'available': livreur.availabilityStatus === 'true', 'not-available': livreur.availabilityStatus === 'false'}">{{ livreur.availabilityStatus }}</div>
-         </div>
-
-          <div>
-             <div class="action-buttons"  >
-              <button class="action-button edit-button">
-                <img src="assets/user-edit.png" alt="Edit">
-              </button>
-              <button class="action-button delete-button" >
-                <img src="assets/delete.png" alt="Delete">
-              </button>
-            </div> 
+          <div *ngFor="let livreur of livreurs" class="unique-livreur-list-item">
+              <div class="unique-avatar-container">
+                  <img [src]="livreur.user.avatar" alt="Avatar" class="unique-avatar-img" (error)="onImgError($event)">
+              </div>
+              <div class="unique-livreur-name">{{ livreur.user?.name }}</div>
+              <div class="unique-livreur-email">{{ livreur.user?.email }}</div>
+              <div class="unique-livreur-phone">{{ livreur.user?.phone }}</div>
+              <div class="unique-livreur-cin">{{ livreur.cin }}</div>
+              <div class="unique-livreur-vehicle">{{ livreur.vehicleType }}</div>
+              <div class="unique-livreur-availability">
+                  <div class="unique-availability-status" [ngClass]="{'unique-available': livreur.availabilityStatus === 'true', 'unique-not-available': livreur.availabilityStatus === 'false'}">{{ livreur.availabilityStatus }}</div>
+              </div>
+              <div class="unique-livreur-actions">
+                  <div class="unique-action-buttons-liv">
+                      <button class="unique-action-button unique-edit-button">
+                          <img src="assets/user-edit.png" alt="Edit">
+                      </button>
+                      <button class="unique-action-button unique-delete-button">
+                          <img src="assets/delete.png" alt="Delete">
+                      </button>
+                  </div>
+              </div>
           </div>
-        </div>
       </div>
-    </div>
+  </div>
+  
   </div>
 </div>
 <div class="client-list-backdrop" *ngIf="isLivreurListPopupVisible" (click)="hideLivreurPopup()"></div>
 
 
+<!-- Popup for Displaying Company List -->
+<div class="client-list-modal" *ngIf="isCompanyListPopupVisible">
+  <div class="client-list-popup-content">
+    <div class="popup-header" style="margin: 20px;">
+      <div class="left-section">
+        <div class="title_client" style="font-size: medium; font-weight:500; margin-left: 30px; font-size:23px;">Gestion des Companies</div>
+      </div>
+      <div class="right-section">
+        <div class="search-container">
+          <input type="text" class="search-input" placeholder="barre de recherche" style="padding-left: 60px; font-family: 'Poppins'; font-weight: lighter;">
+          <img src="assets/loupe.png" alt="Search Icon" class="search-icon" style="padding-left: 10px;">
+        </div>
+        <div class="top-icons">
+          <img src="assets/moon-star.png" alt="Night Mode" class="icon_clients">
+          <img src="assets/bell.png" alt="Notifications" class="icon_clients">
+        </div>
+        <div class="user-profile"></div>
+      </div>
+    </div>
+
+    <div class="vertical-nav" style="margin-top: 45px;">
+      <div class="nav-icon" (click)="hideCompanyPopup()">
+          <img src="assets/home_client.png" alt="Home">
+      </div>
+      <div class="nav-icon" (click)="logout()">
+          <img src="assets/logout.png" alt="Logout">
+      </div>
+    </div>
+
+    <div class="section-header">
+      <div class="title_client2" style="font-weight: 500; font-style: normal; margin-left: 70px;">Information Companies</div>
+      <div class="action-buttons" style="justify-content: flex-end; margin-top: -30px; margin-right: 40px;">
+        <button class="btn btn-add" style="margin-right: 15px;" (click)="showPopupRestaurant()"  (click)="hideCompanyPopup()">
+          <img src="assets/plus.png" style="width: 25px; height: 25px; color: #96aac4; font-family: sans-serif; font-weight: 500;" alt="Add Company"> add company
+        </button>
+        <button class="btn btn-icon">
+          <img src="assets/edition.png" alt="Edit">
+        </button>
+        <button class="btn btn-icon">
+          <img src="assets/changer.png" alt="Filter">
+        </button>
+      </div>
+    </div>
+    <div class="unique-company-popup-inner-content">
+      <div *ngIf="companies.length === 0" class="unique-no-company-message">Aucun company enregistré.</div>
+      <div class="unique-company-list-container">
+          <div class="unique-company-list-header">
+              <div>Avatar</div>
+              <div class="unique-company-name-header" style="margin-left: 20px;">Nom de l'entreprise</div>
+              <div class="unique-company-address-header" style="margin-right: 50px;">Adresse</div>
+              <div class="unique-company-email-header" style="margin-right: 70px;">Email</div>
+              <div class="unique-company-phone-header" style="margin-right: 30px;">Tel</div>
+              <div class="unique-company-hours-header" style="margin-right: 180px;">Heures d'ouverture</div>
+          </div>
+          <div *ngFor="let company of companies" class="unique-company-list-item">
+              <div class="unique-avatar-container">
+                  <img [src]="company.user?.avatar" alt="Avatar" class="unique-avatar-img" (error)="onImgError($event)">
+              </div>
+              <div class="unique-company-name">{{ company.companyName }}</div>
+              <div class="unique-company-address">{{ company.address }}</div>
+              <div class="unique-company-email">{{ company.user?.email }}</div>
+              <div class="unique-company-phone">{{ company.user?.phone }}</div>
+              <div class="unique-company-hours">
+                <span class="unique-company-opening-hour">{{ company.openingHours }}</span> - 
+                <span class="unique-company-closing-hour">{{ company.closingHours }}</span>
+              </div>              
+              
+              <div class="unique-company-actions">
+
+                  <div class="unique-company-action-buttons">
+                      <button class="unique-action-button unique-edit-button">
+                          <img src="assets/user-edit.png" alt="Edit">
+                      </button>
+                      <button class="unique-action-button unique-delete-button">
+                          <img src="assets/delete.png" alt="Delete">
+                      </button>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="client-list-backdrop" *ngIf="isCompanyListPopupVisible" (click)="hideCompanyPopup()"></div>
 
 <script>
   function showPopup() {

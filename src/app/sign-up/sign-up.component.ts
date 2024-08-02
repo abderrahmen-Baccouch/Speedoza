@@ -16,7 +16,7 @@ export class SignUpComponent {
 
   onSubmit(form: NgForm): void {
     if (form.valid && this.password === this.confirmPassword) {
-      // Perform sign-up logic here
+      
       console.log('Sign-up successful', form.value);
     } else {
       console.error('Sign-up failed');

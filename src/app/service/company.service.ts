@@ -21,4 +21,8 @@ export class CompanyService {
   deleteCompany(id: string): Observable<any> {
     return this.http.delete(`${this.baseUrl}/deleteCompany/${id}`);
   }
+
+  getAllCompanies(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/getAllCompanies`);
+  }
 }

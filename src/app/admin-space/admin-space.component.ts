@@ -22,6 +22,7 @@ export class AdminSpaceComponent {
   msgError: string = 'Client existe déjà';
 
   isClientListPopupVisible = false;
+  isCompanyListPopupVisible = false;
 
   client = {
     name: '',
@@ -56,6 +57,7 @@ export class AdminSpaceComponent {
   };
   clients: Client[] = [];
   livreurs: any[] = [];
+  companies: any[] = [];
 
   constructor(private clientService: ClientService, private livreurService: LivreurService, private companyService: CompanyService,private router: Router,  private authService: AuthService  ) { }
 
@@ -69,7 +71,23 @@ export class AdminSpaceComponent {
     this.isPopupVisible = false;
     document.body.classList.remove('blurred');
   }
+  showCompanyPopup() { 
+    this.companyService.getAllCompanies().subscribe(
+      (companies: any[]) => {
+        this.companies = companies;
+        this.isCompanyListPopupVisible = true;
+        document.body.classList.add('blurred');
+      },
+      error => {
+        console.error('Error fetching companies', error);
+      }
+    );
+  }
 
+  hideCompanyPopup() { 
+    this.isCompanyListPopupVisible = false;
+    document.body.classList.remove('blurred');
+  }
 
   
   showPopupRestaurant() {
