@@ -1,7 +1,7 @@
 
 import { Router } from 'express';
 import multer from 'multer';
-import { registerAdmin, loginAdmin, registerLivreur, updateLivreur, deleteLivreur } from '../controller/authController.js';
+import { registerAdmin, loginAdmin, registerLivreur, updateLivreur, deleteLivreur, registerCompany, updateCompany, deleteCompany , getAllLivreurs, getAllCompanies } from '../controller/authController.js';
 
 import passport from 'passport';
 
@@ -23,8 +23,14 @@ const upload = multer({ storage: storage });
 router.post('/registerAdmin', registerAdmin);
 router.post('/loginAdmin', loginAdmin);
 router.post('/registerLivreur', upload.single('avatar'), registerLivreur);
+router.post('/registerCompany', upload.single('avatar'), registerCompany);
 router.put('/updateLivreur/:id', upload.single('avatar'), updateLivreur); 
 router.delete('/deleteLivreur/:id', deleteLivreur); 
+router.put('/updateCompany/:id', upload.single('avatar'), updateCompany); 
+router.delete('/deleteCompany/:id', deleteCompany);
+
+router.get('/getAllLivreurs', getAllLivreurs);
+router.get('/getAllCompanies', getAllCompanies);
 
 
 /************* AUTH USER WITH GOOGLE ******************/
