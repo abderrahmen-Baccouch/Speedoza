@@ -1,0 +1,120 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    position: fixed; 
+    width: 100%;
+    z-index: 10; 
+    
+  }
+  
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+
+}
+
+.logo {
+  height: 50px;
+  margin-right: 0px; 
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Poppins', sans-serif; 
+}
+
+.brand-name {
+  font-size: 1.2em; 
+  color: #f60;
+  font-weight: 700;
+  font-style: italic; 
+}
+
+.sub-brand-name {
+  font-size: 0.65em; 
+  color: rgb(0, 0, 0);
+  margin-left: 5px;
+  align-self: flex-start;
+}
+
+.navbar-items {
+  display: flex;
+  align-items: center;
+  margin-right: 40px;
+}
+
+.nav-item {
+  margin-right: 20px;
+  font-size: 0.9em; 
+  font-weight: 300; 
+  text-transform: none;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #2d2d2d; 
+  padding: 0;
+  display: flex;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.nav-item:hover {
+  text-decoration: underline;
+}
+
+.special-item {
+  background-color: transparent;
+  border: none;
+  font-size: 1em;
+  margin-right: 10px;
+  cursor: pointer;
+  padding: 0 40px;
+}
+
+.start-experience {
+  background-color: #f60;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: bold;
+}
+
+.start-experience:hover {
+  background-color: #e65500;
+}
+
+.dropdown-icon {
+  font-size: 0.8em;
+  margin-left: 3px;
+  display: inline-block;
+  transform: translateY(1px);
+  content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>');
+}
+
+.flag-container {
+  margin-right: 20px;
+}
+
+.flag {
+  height: 35px; 
+  border-radius: 50%;
+  padding-right: 0px;
+  transform: translateY(3px); 
+}
+
+.menu-button {
+    font-size: 1.5em;
+   
+  }
+  
+  

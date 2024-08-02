@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="admin-space.component.css">
+</head>
+<body>
+
+    <header class="curved-header">
+        <div class="header-content">
+            <div class="header-left">
+                <video autoplay muted loop class="header-video">
+                    <source src="https://glovoapp.com/images/landing/address-container-animation.webm" type="video/webm">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <button class="deconnexion-button">
+                <img src="/assets/user_icon.png" alt="Icon"> Deconnexion
+            </button>
+            <p class="styled-text">Speedoza</p>
+        </div>
+    </header>
+    
+    <div class="content">
+        <div class="icon-container">
+            <div class="icon">
+                <img style="margin-top: 5px; margin-right: 5px;" src="https://freepngimg.com/save/139206-food-plate-top-snack-view/528x525" alt="Icon">
+            </div>
+            <div class="icon-text">Restaurant</div>
+        </div>
+        <div class="icon-container" (click)="showLivreurPopup()">
+            <div class="icon">
+                <img src="https://png.pngtree.com/png-clipart/20230914/original/pngtree-food-delivery-vector-png-image_12155890.png" alt="Icon">
+            </div>
+            <div class="icon-text">Livraison</div>
+        </div>
+        <div class="icon-container">
+            <div class="icon">
+                <img style="width: 75px;" src="https://png.pngtree.com/png-clipart/20230914/ourmid/pngtree-italian-pizza-slice-cheese-sausage-three-dimensional-3d-gourmet-fast-food-png-image_10116859.png" alt="Icon">
+            </div>
+            <div class="icon-text">Catégorie</div>
+        </div>
+        <div class="icon-container" (click)="showClientPopup()">
+          <div class="icon">
+            <img src="https://freepngimg.com/save/70865-money-dollar-bag-download-hd-png/1024x979" alt="Icon">
+          </div>
+          <div class="icon-text">Clients</div>
+        </div>
+        
+    </div>
+   
+
+
+    <div class="special-dish-section" >
+        <img src="/assets/food-delivery-application.png" alt="Food Delivery" class="special-dish-image" style="margin-right: -260px;">
+        <div class="special-dish-text">
+            <h2 class="special-dish-heading">Rejoignez Notre Équipe</h2>
+            <p class="special-dish-description">
+                Inscrivez-vous dès aujourd'hui et commencez à livrer des <br> repas à nos clients !
+            </p>
+            <button class="add-delivery-person-button" (click)="showPopup()" style="margin-left: -3px;">Ajouter un livreur</button>
+          
+        </div>
+       
+    </div>
+    
+
+
+    <div class="special-dish-section_2" style="margin-left: 440px; left: 28%;" >
+      <img src="/assets/food-delivery-online.png" style="width: 155px; margin-right: -340px; margin-bottom: 225px;">
+      <div class="special-dish-text">
+          <h2 class="special-dish-heading_2">Rejoignez Notre Plateforme</h2>
+          <p class="special-dish-description_2">
+            Inscrivez votre restaurant dès aujourd'hui et commencez à attirer <br> plus de clients en ligne !
+          </p>
+          <button class="add-delivery-person-button_2" (click)="showPopupRestaurant()" style="margin-left: 3px;">Ajouter un restaurant</button>
+      </div>
+    </div>  
+    
+    <div class="special-dish-section_3" style="margin-left: 420px; left: 57%;" >
+      <img src="/assets/3d-illustration.png" style="width: 155px; margin-right: -245px; margin-bottom: 225px;">
+      <div class="special-dish-text">
+          <h2 class="special-dish-heading_3">Rejoignez Nos Clients</h2>
+          <p class="special-dish-description_3">
+            Inscrivez-vous et commencez à profiterde repas livrés  à votre porte !
+          </p>
+          <button class="add-delivery-person-button_3" (click)="showPopupClient()" style="margin-left: 3px;">Ajouter un client</button>
+        
+      </div>
+     
+    </div>  
+  
+   
+
+    <!-- Popup for Adding Delivery Person -->
+    <div class="modal" *ngIf="isPopupVisible">
+      <div class="popup-content">
+          <div class="popup-left">
+              <img src="https://img.freepik.com/free-photo/fresh-seafood-vegetables-create-healthy-gourmet-meal-underwater-generated-by-artificial-intelligence_188544-239878.jpg" alt="Popup Image" class="popup-image">
+              <img src="https://img.freepik.com/premium-photo/large-bowl-food-with-fish-vegetables_197463-2405.jpg" alt="Popup Image" class="popup-image">
+              <img src="https://img.freepik.com/foto-premium/hamburger-di-formaggio-squisito-volante-con-focacce-di-lattuga-al-pomodoro-di-carne-e-caduta-su-sfondo-nero-generativo-ai_834602-5630.jpg" alt="Popup Image" class="popup-image">
+          </div>
+          <div class="popup-right">
+              <button class="close-button" (click)="hidePopup()">&#x2715;</button>
+            
+              <div class="popup-inner-content">
+
+                <div class = "title-container">  
+                      <h2 class="popup-title" style=" margin-left: -280px; margin-top: -180px; font-family:'Poppins'; font-weight: bold; " >Rejoignez Notre Équipe</h2>
+                      <div class="underline"></div>
+                </div>
+                  
+                <form #livreurForm="ngForm" (ngSubmit)="registerLivreur(livreurForm)">
+                  <div class="input-row">
+                      <div class="input-container">
+                          <input type="text" id="name" class="styled-input" placeholder="Nom de livreur" style="font-family: 'Poppins'; font-weight: lighter;" [(ngModel)]="livreur.name" name="name" required>
+                          <div *ngIf="livreurForm.submitted && livreurForm.controls['name'].errors?.['required']" class="error-message">Le nom est requis.</div>
+                      </div>
+                      <div class="input-container">
+                          <input type="email" id="email" class="styled-input" placeholder="Email de livreur" style="font-family: 'Poppins'; font-weight: lighter;" [(ngModel)]="livreur.email" name="email" required>
+                          <div *ngIf="livreurForm.submitted && livreurForm.controls['email'].errors?.['required']" class="error-message">L'email est requis.</div>
+                      </div>
+                  </div>    
+              
+                  <div class="input-row_2" style="width: 106%;">
+                      <div class="input-container_2" style="margin-left: 70px;">
+                          <input type="text" id="phone" class="styled-input" placeholder="Téléphone de livreur" style="font-family: 'Poppins'; font-weight: lighter;" [(ngModel)]="livreur.phone" name="phone" required>
+                          <div *ngIf="livreurForm.submitted && livreurForm.controls['phone'].errors?.['required']" class="error-message">Le téléphone est requis.</div>
+                      </div>
+                      <div class="input-container_2">
+                          <input type="text" id="cin" class="styled-input" placeholder="CIN de livreur" style="font-family: 'Poppins'; font-weight: lighter;" [(ngModel)]="livreur.cin" name="cin" required>
+                          <div *ngIf="livreurForm.submitted && livreurForm.controls['cin'].errors?.['required']" class="error-message">Le CIN est requis.</div>
+                      </div>
+                  </div>    
+              
+                  <div class="input-row_3" style="width:79.5%;">
+                      <div class="input-container_3" style="left: -13%;">
+                          <select id="vehicle" class="styled-select" style="font-family: 'Poppins'; font-weight: lighter; margin-left: 70px;" [(ngModel)]="livreur.vehicleType" name="vehicleType" required>
+                              <option value="" disabled selected>Véhicule</option>
+                              <option value="voiture">Voiture</option>
+                              <option value="bicyclette">Bicyclette</option>
+                          </select>
+                          <div *ngIf="livreurForm.submitted && livreurForm.controls['vehicleType'].errors?.['required']" class="error-messageLivreur" >Le type de véhicule est requis.</div>
+                      </div>
+                      <div class="input-container_3" style="left: -13%;">
+                          <select id="availabilityStatus" class="styled-select" style="font-family: 'Poppins'; font-weight: lighter; margin-left: 100px;" [(ngModel)]="livreur.availabilityStatus" name="availabilityStatus" required>
+                              <option value="" disabled selected>Etat</option>
+                              <option value="true">True</option>
+                              <option value="false">False</option>
+                          </select>
+                          <div *ngIf="livreurForm.submitted && livreurForm.controls['availabilityStatus'].errors?.['required']" class="error-messageLivreur"  style="margin-left: 103px;">L'état est requis.</div>
+                      </div>
+                  </div>    
+              
+                
+              
+
+                  <div class="file-upload-container">
+                    <div class="file-label-wrapper" style="margin-left: -28px; margin-top: -20px;">
+                        <img src="assets/cloud-computing.png" alt="Cloud Icon" class="file-icon">
+                        <label for="file-upload" class="file-label">Glisser votre fichier ici</label>
+                    </div>
+                    <div class="file-input-wrapper" style="margin-top: -40px; margin-left: 200px;">
+                      <input type="file" id="file-upload" class="file-input" #fileInput (change)="onFileChange($event)">
+                      <button type="button" class="browse-button" (click)="triggerFileInputClick(fileInput)">Browse files</button>
+                    </div>
+                    <div id="file-details" class="file-details" style="display: none; margin-right: 100px;">
+                        <span id="file-name">{{ fileName }}</span>
+                        <span id="file-size">{{ fileSize }}</span>
+                        <button type="button" class="remove-button" (click)="removeFile()">×</button>
+                    </div>
+                </div>
+
+          <div class="button-container" style="margin-left: 60px;">
+            <button class="btn-outline" *ngIf="isPopupVisible" (click)="hidePopup()">SORTIR</button>
+            <button class="btn-solid" type="submit">ENREGISTRER!</button>
+        </div>
+    </form>
+        
+          
+          
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="backdrop" *ngIf="isPopupVisible" (click)="hidePopup()"></div>
+
+
+
+
+<!-- Popup for Adding Company -->
+<div class="modal" *ngIf="isPopupRestoVisible">
+  <div class="popup-content">
+      <div class="popup-left">
+          <img src="https://png.pngtree.com/background/20230519/original/pngtree-man-with-chef-coat-working-in-kitchen-of-a-restaurant-close-picture-image_2662771.jpg" alt="Popup Image" class="popup-image">
+          <img src="https://mfiles.alphacoders.com/101/1012045.png" alt="Popup Image" class="popup-image">
+          <img src="https://wallpaperbat.com/img/8943627-free-ai-art-image-of-culinary-passion.jpg" alt="Popup Image" class="popup-image">
+      </div>
+      <div class="popup-right">
+          <button class="close-button" (click)="hidePopupRestaurant()">&#x2715;</button>
+        
+          <div class="popup-inner-content">
+            <div class="title-container" style="margin-left: 60px; margin-bottom: -10px;">  
+                <h2 class="popup-title" style="margin-left: -280px; margin-top: -180px; font-family:'Poppins'; font-weight: bold;">Rejoignez Notre Plateforme</h2>
+                <div class="underline"></div>
+            </div>
+              
+            <form #companyForm="ngForm" (ngSubmit)="registerCompany(companyForm)">
+              <div class="input-row">
+                  <div class="input-container">
+                      <input type="text" id="name" class="styled-input" placeholder="Propriétaire" style="font-family: 'Poppins'; font-weight: lighter;" [(ngModel)]="company.name" name="name" required>
+                      <div *ngIf="companyForm.submitted && companyForm.controls['name'].errors?.['required']" class="error-message">nom est requis.</div>
+                  </div>
+                  <div class="input-container">
+                      <input type="text" id="companyName" class="styled-input" placeholder="Nom" style="font-family: 'Poppins'; font-weight: lighter;" [(ngModel)]="company.companyName" name="companyName" required>
+                      <div *ngIf="companyForm.submitted && companyForm.controls['companyName'].errors?.['required']" class="error-message">nom est requis.</div>
+                  </div>
+                  <div class="input-container">
+                      <input type="text" id="type" class="styled-input" placeholder="Type" style="font-family: 'Poppins'; font-weight: lighter;" [(ngModel)]="company.type" name="type" required>
+                      <div *ngIf="companyForm.submitted && companyForm.controls['type'].errors?.['required']" class="error-message">type est requis.</div>
+                  </div>
+              </div>    
+            
+              <div class="input-row-company_2" >
+                  <div class="input-container_2">
+                      <input type="text" id="phone" class="styled-input" placeholder="Téléphone" style="font-family: 'Poppins'; font-weight: lighter;" [(ngModel)]="company.phone" name="phone" required>
+                      <div *ngIf="companyForm.submitted && companyForm.controls['phone'].errors?.['required']" class="error-message">tel est requis.</div>
+                  </div>
+                  <div class="input-container_2">
+                      <input type="text" id="address" class="styled-input" placeholder="Adresse" style="font-family: 'Poppins'; font-weight: lighter;" [(ngModel)]="company.address" name="address" required>
+                      <div *ngIf="companyForm.submitted && companyForm.controls['address'].errors?.['required']" class="error-message">&#64; est requise.</div>
+                  </div>
+                  <div class="input-container_2">
+                      <input type="email" id="email" class="styled-input" placeholder="Email" style="font-family: 'Poppins'; font-weight: lighter;" [(ngModel)]="company.email" name="email" required>
+                      <div *ngIf="companyForm.submitted && companyForm.controls['email'].errors?.['required']" class="error-message">email requis.</div>
+                  </div>
+              </div>    
+          
+              <div class="input-row_3" style="left:10%;">
+                  <div class="input-container_3">
+                      <label for="openingHours" style="font-family: 'Poppins'; font-weight: lighter; margin-right: 45px;">Heures d'ouverture</label>
+                      <input type="time" id="openingHours" class="styled-select_3" style="font-family: 'Poppins'; font-weight: lighter;" [(ngModel)]="company.openingHours" name="openingHours" required>
+                      <div *ngIf="companyForm.submitted && companyForm.controls['openingHours'].errors?.['required']" class="error-message" style="margin-left : 15px;">heures sont requises.</div>
+                  </div>
+                  <div class="input-container_3" style="left: -9%;">
+                      <label for="closingHours" style="font-family: 'Poppins'; font-weight: lighter; margin-right: 25px;">Heures de fermeture</label>
+                      <input type="time" id="closingHours" class="styled-select_3" style="font-family: 'Poppins'; font-weight: lighter;" [(ngModel)]="company.closingHours" name="closingHours" required>
+                      <div *ngIf="companyForm.submitted && companyForm.controls['closingHours'].errors?.['required']" class="error-message"  style="margin-left : 15px;">heures sont requises.</div>
+                  </div>
+              </div>    
+
+              <div class="file-upload-container">
+                <div class="file-label-wrapper" style="margin-left: -28px; margin-top: -20px;">
+                    <img src="assets/cloud-computing.png" alt="Cloud Icon" class="file-icon">
+                    <label for="file-upload" class="file-label">Glisser votre fichier ici</label>
+                </div>
+                <div class="file-input-wrapper" style="margin-top: -40px; margin-left: 200px;">
+                  <input type="file" id="file-upload" class="file-input" #fileInput (change)="onFileChange($event)">
+                  <button type="button" class="browse-button" (click)="triggerFileInputClick(fileInput)">Browse files</button>
+                </div>
+                <div id="file-details" class="file-details" style="display: none; margin-right: 100px;">
+                    <span id="file-name">{{ fileName }}</span>
+                    <span id="file-size">{{ fileSize }}</span>
+                    <button type="button" class="remove-button" (click)="removeFile()">×</button>
+                </div>
+              </div>
+
+              <div class="button-container" style="margin-left: 60px;">
+                <button class="btn-outline" *ngIf="isPopupRestoVisible" (click)="hidePopupRestaurant()">SORTIR</button>
+                <button class="btn-solid" type="submit">ENREGISTRER!</button>
+              </div>
+            </form>
+          </div>
+      </div>
+  </div>
+
+</div>
+<div class="backdrop" *ngIf="isPopupRestoVisible" (click)="hidePopupRestaurant()"></div>
+
+
+
+
+<div id="toastBox">
+  <div *ngFor="let msg of toastMessages" class="toast">
+    <i class="fa fa-check-circle success-icon"></i>
+    {{ msg }}</div>
+</div>
+
+<div id="toastBoxError">
+  <div *ngFor="let msg of toastMessagesError" class="toastError">
+    <i class="fa fa-exclamation-circle warning-icon"></i>
+    {{ msgError }}</div>
+</div>
+
+
+
+
+
+
+   
+    <!-- Popup for Adding client -->
+    <div class="modal" *ngIf="isPopupClientVisible">
+      <div class="popup-content">
+          <div class="popup-left">
+              <img src="https://img.freepik.com/premium-photo/group-friends-eating-fast-food-with-friends_972478-1362.jpg" alt="Popup Image" class="popup-image">
+              <img src="https://images.pexels.com/photos/8319093/pexels-photo-8319093.jpeg?cs=srgb&dl=pexels-lucasandrade-8319093.jpg&fm=jpg" alt="Popup Image" class="popup-image">
+              <img src="https://media.istockphoto.com/id/1293369283/photo/hamburger-for-two.jpg?s=612x612&w=0&k=20&c=-fH8Mjc3-VufYhwEfMwb3jv2nhMZIhiFnO2ncDEvH6I=" alt="Popup Image" class="popup-image">
+          </div>
+          <div class="popup-right_3">
+              <button class="close-button" (click)="hidePopupClient()">&#x2715;</button>
+            
+              <div class="popup-inner-content"style="margin-top: 120px;">
+
+                <div class = "title-container" >  
+                      <h2 class="popup-title" style=" margin-left: -295px; margin-top: -180px; font-family:'Poppins'; font-weight: bold; " >Rejoignez Nos Clients</h2>
+                      <div class="underline"></div>
+                </div>
+                <form #clientForm="ngForm" (ngSubmit)="registerClient(clientForm)" style="margin-top: 20px;">
+                  <div class="input-row">
+                      <div class="input-container">
+                          <input type="text" id="name" class="styled-input" placeholder="Nom de client" style="font-family: 'Poppins'; font-weight: lighter;" [(ngModel)]="client.name" name="name" required>
+                          <div *ngIf="clientForm.submitted && clientForm.controls['name'].errors?.['required']" class="error-message">Le nom est requis.</div>
+                      </div>
+                      <div class="input-container">
+                          <input type="email" id="email" class="styled-input" placeholder="Email de client" style="font-family: 'Poppins'; font-weight: lighter;" [(ngModel)]="client.email" name="email" required>
+                          <div *ngIf="clientForm.submitted && clientForm.controls['email'].errors?.['required']" class="error-message">L'email est requis.</div>
+                      </div>
+                  </div>    
+              
+                  <div class="input-row_4">
+                      <div class="input-container_4" style="margin-left: 70px;">
+                          <input type="text" id="phone" class="styled-input" placeholder="Téléphone de client" style="font-family: 'Poppins'; font-weight: lighter;" [(ngModel)]="client.phone" name="phone" required>
+                          <div *ngIf="clientForm.submitted && clientForm.controls['phone'].errors?.['required']" class="error-message">Le téléphone est requis.</div>
+                      </div>
+                      <div class="input-container_4">
+                          <input type="text" id="address" class="styled-input" placeholder="Adresse de client" style="font-family: 'Poppins'; font-weight: lighter;" [(ngModel)]="client.address" name="address" required>
+                          <div *ngIf="clientForm.submitted && clientForm.controls['address'].errors?.['required']" class="error-message">L'adresse est requise.</div>
+                      </div>
+                  </div>    
+              
+                  <div class="button-container_3">
+                      <button class="btn-outline_3" *ngIf="isPopupClientVisible" (click)="hidePopupClient()">SORTIR</button>
+                      <button class="btn-solid_3" type="submit">ENREGISTRER!</button>
+                  </div>
+              </form>
+           
+      
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="backdrop" *ngIf="isPopupClientVisible" (click)="hidePopupClient()"></div>
+<!-- Popup for Displaying Client List -->
+<div class="client-list-modal-unique" *ngIf="isClientListPopupVisible">
+  <div class="client-list-popup-content-unique">
+    <div class="popup-header-unique" style="margin: 20px;">
+      <div class="left-section-unique">
+        <div class="title-client-unique" style=" font-size: medium; font-weight:500; margin-left: 30px; font-size:23px;">Gestion des Clients</div>
+      </div>
+      <div class="right-section-unique">
+        <div class="search-container-unique">
+          <input type="text" class="search-input-unique" placeholder="barre de recherche" style="padding-left: 60px; font-family: 'Poppins'; font-weight: lighter;">
+          <img src="assets/loupe.png" alt="Search Icon" class="search-icon-unique" style="padding-left: 10px;">
+        </div>
+        <div class="top-icons-unique">
+          <img src="assets/moon-star.png" alt="Night Mode" class="icon-clients-unique">
+          <img src="assets/bell.png" alt="Notifications" class="icon-clients-unique">
+        </div>
+        <div class="user-profile-unique"></div>
+      </div>
+    </div>
+
+    <div class="vertical-nav-unique" style="margin-top: 45px;">
+      <div class="nav-icon-unique" (click)="hideClientPopup()">
+          <img src="assets/home_client.png" alt="Home">
+      </div>
+      <div class="nav-icon-unique" (click)="logout()">
+          <img src="assets/logout.png" alt="Logout">
+      </div>
+    </div>
+
+    <div class="section-header-unique">
+      <div class="title-client2-unique" style=" font-weight: 500; font-style: normal; margin-left: 70px;">Information Clients</div>
+      <div class="action-buttons-unique" style="justify-content: flex-end; margin-top: -30px; margin-right: 40px;">
+        <button class="btn-add-unique" style="margin-right: 15px;" (click)="showPopupClient()" (click)="hideClientPopup()">
+          <img src="assets/plus.png" style="width: 25px; height: 25px; color: #96aac4; font-family: sans-serif; font-weight: 500;" alt="Add Client">add client
+        </button>
+        <button class="btn-icon-unique">
+          <img src="assets/edition.png" alt="Edit">
+        </button>
+        <button class="btn-icon-unique">
+          <img src="assets/changer.png" alt="Filter">
+        </button>
+      </div>
+    </div>
+    <div class="client-list-popup-inner-content-unique" style="margin-left: 100px; margin-top: 10px;">
+      <div *ngIf="clients.length === 0" style="margin-left: 10px;">Aucun client enregistré.</div>
+      <div class="client-list-container-unique">
+          <div class="client-list-header-unique">
+              <div>Nom</div>
+              <div style="margin-right: 20px;">Adresse Email</div>
+              <div style="margin-left:20px;">Téléphone</div>
+              <div style="margin-left: 10px;">Adresse</div>
+              <div style="margin-right: 30px;">Actions</div>
+          </div>
+          <div *ngFor="let client of clients" class="client-list-item-unique">
+              <div>{{ client.name }}</div>
+              <div>{{ client.email }}</div>
+              <div style="margin-left: 60px;">{{ client.phone }}</div>
+              <div>{{ client.address }}</div>
+              <div>
+                <div class="action-buttons-unique">
+                    <span class="tag-client-unique">Client</span>
+                    <button class="action-button-unique edit-button-unique">
+                        <img src="assets/user-edit.png" alt="Edit">
+                    </button>
+                    <button class="action-button-unique delete-button-unique">
+                        <img src="assets/delete.png" alt="Delete">
+                    </button>
+                </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="client-list-backdrop-unique" *ngIf="isClientListPopupVisible" (click)="hideClientPopup()"></div>
+
+
+
+
+<!-- Popup for Displaying Livreur List -->
+<div class="client-list-modal" *ngIf="isLivreurListPopupVisible">
+  <div class="client-list-popup-content">
+    <div class="popup-header" style="margin: 20px;">
+      <div class="left-section">
+        <div class="title_client" style=" font-size: medium; font-weight:500; margin-left: 30px; font-size:23px;">Gestion des Livreurs</div>
+      </div>
+      <div class="right-section">
+        <div class="search-container">
+          <input type="text" class="search-input" placeholder="barre de recherche" style="padding-left: 60px; font-family: 'Poppins'; font-weight: lighter;">
+          <img src="assets/loupe.png" alt="Search Icon" class="search-icon" style="padding-left: 10px;">
+        </div>
+        <div class="top-icons">
+          <img src="assets/moon-star.png" alt="Night Mode" class="icon_clients">
+          <img src="assets/bell.png" alt="Notifications" class="icon_clients">
+        </div>
+        <div class="user-profile"></div>
+      </div>
+    </div>
+
+    <div class="vertical-nav" style="margin-top: 45px;">
+      <div class="nav-icon" (click)="hideLivreurPopup()">
+          <img src="assets/home_client.png" alt="Home">
+      </div>
+      <div class="nav-icon" (click)="logout()">
+          <img src="assets/logout.png" alt="Logout">
+      </div>
+    </div>
+
+    <div class="section-header">
+      <div class="title_client2" style=" font-weight: 500; font-style: normal; margin-left: 70px;">Information Livreurs</div>
+      <div class="action-buttons" style="justify-content: flex-end; margin-top: -30px; margin-right: 40px;">
+        <button class="btn btn-add" style="margin-right: 15px;" (click)="showPopup()" (click)="hideLivreurPopup()">
+          <img src="assets/plus.png" style="width: 25px; height: 25px; color: #96aac4; font-family: sans-serif; font-weight: 500;" alt="Add Livreur"> add livreur
+        </button>
+        <button class="btn btn-icon">
+          <img src="assets/edition.png" alt="Edit">
+        </button>
+        <button class="btn btn-icon">
+          <img src="assets/changer.png" alt="Filter">
+        </button>
+      </div>
+    </div>
+    <div class="client-list-popup-inner-content" style="margin-left: 100px;  ">
+      <div *ngIf="livreurs.length === 0" style="margin-left: 10px;">Aucun livreur enregistré.</div>
+      <div class="getClient-list-container">
+        <div class="client-list-header" >
+          <div>Avatar</div>
+          <div style="margin-left: 0px;">Nom</div>
+          <div style="margin-left: 20px;">Email</div>
+          <div style="margin-left: 50px;">Tel</div>
+          <div style="margin-left: -20px;">CIN</div>
+          <div style="margin-left:  20px;">auto</div>
+          <div style="margin-left: -20px;">Disp</div>
+          
+        </div>
+        <div *ngFor="let livreur of livreurs" class="livreur-list-item" >
+          
+          <div style="margin-left: -25px; margin-top: 10px; "  class="avatar-container" >
+          
+            <img [src]="livreur.user.avatar" alt="Avatar" class="avatar-img" (error)="onImgError($event)">
+          
+          </div>
+
+          <div style="margin-left: 30px;" >{{ livreur.user?.name }}</div>
+          <div style="margin-left: 20px;">{{ livreur.user?.email }}</div>
+          <div>{{ livreur.user?.phone }}</div>
+          <div  >{{ livreur.cin }}</div>
+          <div style="margin-left: 25px;">{{ livreur.vehicleType }}</div>
+          <div style="margin-top: -5px;">
+          <div class="list-item" [ngClass]="{'available': livreur.availabilityStatus === 'true', 'not-available': livreur.availabilityStatus === 'false'}">{{ livreur.availabilityStatus }}</div>
+         </div>
+
+          <div>
+             <div class="action-buttons"  >
+              <button class="action-button edit-button">
+                <img src="assets/user-edit.png" alt="Edit">
+              </button>
+              <button class="action-button delete-button" >
+                <img src="assets/delete.png" alt="Delete">
+              </button>
+            </div> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="client-list-backdrop" *ngIf="isLivreurListPopupVisible" (click)="hideLivreurPopup()"></div>
+
+
+
+<script>
+  function showPopup() {
+      document.getElementById('popup').style.display = 'flex';
+      document.getElementById('backdrop').style.display = 'block';
+  }
+
+  function hidePopup() {
+      document.getElementById('popup').style.display = 'none';
+      document.getElementById('backdrop').style.display = 'none';
+  }
+</script>
+
+
+</body>
+</html>

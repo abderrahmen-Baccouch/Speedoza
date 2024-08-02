@@ -1,0 +1,26 @@
+<app-top-bar></app-top-bar>
+
+<div *ngIf="!isLoggedIn" class="main-container">
+  <div class="left-container">
+    <div class="image-overlay">
+      <div class="image-wrapper image1">
+        <img src="assets/food1.png" class="image-small">
+      </div>
+      <div class="image-wrapper image2">
+        <img src="assets/food2.png" class="image-small">
+      </div>
+    </div>
+    <div class="container">
+      <app-left-content></app-left-content>
+    </div>
+  </div>
+  <div class="background-image"></div>
+  <div class="right-container">
+    <app-right-content></app-right-content>
+  </div>
+</div>
+
+<div *ngIf="isLoggedIn">
+  <app-admin-space></app-admin-space>
+</div>
+

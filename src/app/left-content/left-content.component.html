@@ -1,0 +1,65 @@
+<div class="login-container">
+  <img src="assets/logo2.png" alt="Icon" class="login-icon">
+  <h2 class="login-title">Accédez à votre espace</h2>
+  <form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
+    <div class="form-group">
+      <label for="email">E-mail de l'utilisateur</label>
+      <input type="email" id="email" name="email" class="form-control" placeholder="admin@example.com" required [(ngModel)]="email" ngModel>
+      <span class="error-message">Ce champ est obligatoire</span>
+    </div>
+    <div class="form-group">
+      <label for="password">Mot de passe</label>
+      <input type="password" id="password" name="password" class="form-control" placeholder="8 caractères au minimum" required [(ngModel)]="password" ngModel>
+      <span class="error-message">Ce champ est obligatoire</span>
+    </div>
+    <a href="#" class="forgot-password">Mot de passe oublié ?</a>
+    <button type="submit" class="btn btn-login">Se connecter</button>
+  </form>
+  <p class="quick-access-text">
+    <span>Ou un accès rapide via</span>
+  </p>
+  <button class="btn btn-partner-portal">
+    <img src="assets/flesh.png" alt="Icon" class="portal-icon">
+    Manager Portal des partenaires
+  </button>
+  <p class="signup-text">Vous n'avez pas de compte ? <a href="#" (click)="showSignUp()">S'inscrire</a></p>
+</div>
+
+
+<div class="modal" *ngIf="isSignUpVisible">
+    <div class="signup-container">
+      <img src="assets/logo2.png" style="margin-left: 135px;" alt="Icon" class="login-icon">
+      <h2 class="login-title" style="text-align: center;">S'inscrire dans Speedoza</h2>
+      <form (ngSubmit)="onSignUp(signUpForm)" #signUpForm="ngForm">
+        <div class="form-group">
+          <label for="signup-email">E-mail de l'utilisateur</label>
+          <input type="email" id="signup-email" name="email" class="form-control" placeholder="admin@example.com" required [(ngModel)]="signUpEmail" ngModel>
+          <span class="error-message">Ce champ est obligatoire</span>
+        </div>
+        <div class="form-group">
+          <label for="signup-password">Mot de passe</label>
+          <div class="password-wrapper">
+            <input type="password" id="signup-password" name="password" class="form-control" placeholder="8 caractères au minimum" required [(ngModel)]="signUpPassword" ngModel>
+            <img *ngIf="!isPasswordVisible" src="assets/oeil.png" class="toggle-password" (click)="togglePasswordVisibility('signup-password')" alt="Afficher le mot de passe">
+            <img *ngIf="isPasswordVisible" src="assets/oeil-ferme.png" class="toggle-password" (click)="togglePasswordVisibility('signup-password')" alt="Masquer le mot de passe">
+          </div>
+          <span *ngIf="isPasswordVisible" class="password-visible-text">Le mot de passe est visible</span>
+          <span class="error-message">Ce champ est obligatoire</span>
+        </div>
+        <div class="form-group">
+          <label for="confirm-password">Confirmez le mot de passe</label>
+          <div class="password-wrapper">
+            <input type="password" id="confirm-password" name="confirm-password" class="form-control" placeholder="8 caractères au minimum" required [(ngModel)]="signUpConfirmPassword" ngModel>
+            <img *ngIf="!isConfirmPasswordVisible" src="assets/oeil.png" class="toggle-password" (click)="togglePasswordVisibility('confirm-password')" alt="Afficher le mot de passe">
+            <img *ngIf="isConfirmPasswordVisible" src="assets/oeil-ferme.png" class="toggle-password" (click)="togglePasswordVisibility('confirm-password')" alt="Masquer le mot de passe">
+          </div>
+          <span *ngIf="isConfirmPasswordVisible" class="password-visible-text">Le mot de passe est visible</span>
+          <span class="error-message">Ce champ est obligatoire</span>
+        </div>
+        <button type="submit" class="btn btn-login">S'inscrire</button>
+      </form>
+      <p class="signup-text" style="text-align: center;">Vous avez déjà un compte ? <a href="#" (click)="showLogin()">Connexion</a></p>
+    </div>
+</div>
+
+<div class="backdrop" *ngIf="isSignUpVisible" (click)="hideSignUp()"></div>
