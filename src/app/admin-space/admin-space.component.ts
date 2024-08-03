@@ -6,6 +6,7 @@ import { LivreurService } from '../service/livreur.service';
 import { CompanyService } from '../service/company.service';
 import { Router } from '@angular/router'; 
 import { AuthService } from '../service/services.service';
+import { FoodService } from '../service/food.service';
 
 @Component({
   selector: 'app-admin-space',
@@ -55,11 +56,36 @@ export class AdminSpaceComponent {
     openingHours: '',
     closingHours: ''
   };
+ 
+
+  food = {
+    name: '',
+    description: '',
+    photos: [] as File[]
+  };
+
+  files: FileList | null = null;
+  imagePreviews: string[] = [];
+  isFoodListPopupVisible = false;
   clients: Client[] = [];
   livreurs: any[] = [];
   companies: any[] = [];
 
-  constructor(private clientService: ClientService, private livreurService: LivreurService, private companyService: CompanyService,private router: Router,  private authService: AuthService  ) { }
+  constructor(private clientService: ClientService, private livreurService: LivreurService, private companyService: CompanyService,private router: Router,  private authService: AuthService ,  private foodService: FoodService) { }
+
+
+
+  showFoodPopup() {
+    this.isFoodListPopupVisible = true;
+    document.body.classList.add('blurred');
+  }
+
+  hideFoodPopup() {
+    this.isFoodListPopupVisible = false;
+    document.body.classList.remove('blurred');
+  }
+
+
 
 
   showPopup() {
@@ -275,6 +301,54 @@ export class AdminSpaceComponent {
   onImgError(event: any) {
     event.target.src = 'assets/food.png'; 
   }
+
+  onFileChangeFood(event: any) {
+    this.files = event.target.files;
+    if (this.files && this.files.length > 0) {
+      this.food.photos = Array.from(this.files);
+
+      // Generate image previews
+      this.imagePreviews = [];
+      Array.from(this.files).forEach(file => {
+        const reader = new FileReader();
+        reader.onload = (e: any) => {
+          this.imagePreviews.push(e.target.result);
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+  }
+
+  removeImage(preview: string) {
+    const index = this.imagePreviews.indexOf(preview);
+    if (index >= 0) {
+      this.imagePreviews.splice(index, 1);
+      this.food.photos.splice(index, 1);
+    }
+  }
+  registerFood(form: NgForm) {
+    if (form.valid && this.food.photos.length > 0) {
+      const formData = new FormData();
+      formData.append('name', this.food.name);
+      formData.append('description', this.food.description);
+      this.food.photos.forEach((file) => {
+        formData.append('photos', file, file.name);
+      });
   
+      this.foodService.createFood(formData).subscribe(
+        response => {
+          console.log('Food created successfully', response);
+          this.showToast('Enregistré avec succès');
+          this.hideFoodPopup();
+        },
+        error => {
+          console.error('Error creating food', error);
+          this.showToastError('Erreur lors de la création de la nourriture');
+        }
+      );
+    } else {
+      console.log('Form is invalid or files are missing');
+    }
+  }
   
 }
