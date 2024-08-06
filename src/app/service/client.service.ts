@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AuthService } from './services.service'; 
 
 export interface Client {
   id?: string;
@@ -16,22 +17,32 @@ export interface Client {
 export class ClientService {
   private apiUrl = 'http://localhost:5100/api';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService) {} 
+
+  private getAuthHeaders(): HttpHeaders {
+    const token = localStorage.getItem('token');
+    return new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+  }
 
   createClient(client: Client): Observable<any> {
-    return this.http.post(`${this.apiUrl}/createClient`, client);
+    const headers = this.getAuthHeaders();
+    return this.http.post(`${this.apiUrl}/createClient`, client, { headers });
   }
 
   updateClient(id: string, client: Client): Observable<any> {
-    return this.http.put(`${this.apiUrl}/updateClient/${id}`, client);
+    const headers = this.getAuthHeaders();
+    return this.http.put(`${this.apiUrl}/updateClient/${id}`, client, { headers });
   }
 
   deleteClient(id: string): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/deleteClient/${id}`);
+    const headers = this.getAuthHeaders();
+    return this.http.delete(`${this.apiUrl}/deleteClient/${id}`, { headers });
   }
 
   getAllClients(): Observable<Client[]> {
-    return this.http.get<Client[]>(`${this.apiUrl}/getAllClients`);
+    const headers = this.getAuthHeaders();
+    return this.http.get<Client[]>(`${this.apiUrl}/getAllClients`, { headers });
   }
-
 }

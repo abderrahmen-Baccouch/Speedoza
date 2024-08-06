@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -10,11 +10,28 @@ export class FoodService {
 
   constructor(private http: HttpClient) { }
 
+  // createFood(formData: FormData): Observable<any> {
+  //   return this.http.post(`${this.apiUrl}/createFood`, formData);
+  // }
+
+  // getAllFoods(): Observable<any> {
+  //   return this.http.get(`${this.apiUrl}/getAllFoods`);
+  // }
+
   createFood(formData: FormData): Observable<any> {
-    return this.http.post(`${this.apiUrl}/createFood`, formData);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.post(`${this.apiUrl}/createFood`, formData, { headers });
   }
 
   getAllFoods(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/getAllFoods`);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get(`${this.apiUrl}/getAllFoods`, { headers });
   }
+
 }

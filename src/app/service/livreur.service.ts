@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -10,13 +10,20 @@ export class LivreurService {
 
   constructor(private http: HttpClient) {}
 
+  private getAuthHeaders(): HttpHeaders {
+    const token = localStorage.getItem('token'); 
+    return new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+  }
+
   createLivreur(livreur: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/registerLivreur`, livreur);
+    const headers = this.getAuthHeaders();
+    return this.http.post(`${this.apiUrl}/registerLivreur`, livreur, { headers });
   }
 
   getAllLivreurs(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/getAllLivreurs`);
+    const headers = this.getAuthHeaders();
+    return this.http.get<any[]>(`${this.apiUrl}/getAllLivreurs`, { headers });
   }
-
-
 }

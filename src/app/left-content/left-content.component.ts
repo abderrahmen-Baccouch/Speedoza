@@ -31,6 +31,7 @@ export class LeftContentComponent {
       this.authService.login(this.email, this.password).subscribe(
         response => {
           console.log('Login successful', response);
+          localStorage.setItem('token', response.token); 
           this.router.navigate(['/admin-space']);
         },
         error => {

@@ -159,11 +159,11 @@
                   <div class="file-upload-container">
                     <div class="file-label-wrapper" style="margin-left: -28px; margin-top: -20px;">
                         <img src="assets/cloud-computing.png" alt="Cloud Icon" class="file-icon">
-                        <label for="file-upload" class="file-label">Glisser votre fichier ici</label>
+                        <label for="file-upload" class="file-label" style="margin-right: 260px;">Glisser votre fichier ici</label>
                     </div>
                     <div class="file-input-wrapper" style="margin-top: -40px; margin-left: 200px;">
                       <input type="file" id="file-upload" class="file-input" #fileInput (change)="onFileChange($event)">
-                      <button type="button" class="browse-button" (click)="triggerFileInputClick(fileInput)">Browse files</button>
+                      <button type="button" class="browse-button" (click)="triggerFileInputClick(fileInput)" style="margin-right: 130px;">Browse files</button>
                     </div>
                     <div id="file-details" class="file-details" style="display: none; margin-right: 100px;">
                         <span id="file-name">{{ fileName }}</span>
@@ -254,11 +254,11 @@
               <div class="file-upload-container">
                 <div class="file-label-wrapper" style="margin-left: -28px; margin-top: -20px;">
                     <img src="assets/cloud-computing.png" alt="Cloud Icon" class="file-icon">
-                    <label for="file-upload" class="file-label">Glisser votre fichier ici</label>
+                    <label for="file-upload" class="file-label" style="margin-right: 260px;">Glisser votre fichier ici</label>
                 </div>
                 <div class="file-input-wrapper" style="margin-top: -40px; margin-left: 200px;">
                   <input type="file" id="file-upload" class="file-input" #fileInput (change)="onFileChange($event)">
-                  <button type="button" class="browse-button" (click)="triggerFileInputClick(fileInput)">Browse files</button>
+                  <button type="button" class="browse-button" (click)="triggerFileInputClick(fileInput)" style="margin-right: 130px;">Browse files</button>
                 </div>
                 <div id="file-details" class="file-details" style="display: none; margin-right: 100px;">
                     <span id="file-name">{{ fileName }}</span>

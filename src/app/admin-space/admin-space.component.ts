@@ -85,18 +85,6 @@ export class AdminSpaceComponent {
     document.body.classList.remove('blurred');
   }
 
-
-
-
-  showPopup() {
-    this.isPopupVisible = true;
-    document.body.classList.add('blurred');
-  }
-
-  hidePopup() {
-    this.isPopupVisible = false;
-    document.body.classList.remove('blurred');
-  }
   showCompanyPopup() { 
     this.companyService.getAllCompanies().subscribe(
       (companies: any[]) => {
@@ -116,26 +104,6 @@ export class AdminSpaceComponent {
   }
 
   
-  showPopupRestaurant() {
-    this.isPopupRestoVisible = true;
-    document.body.classList.add('blurred');
-  }
-
-  hidePopupRestaurant() {
-    this.isPopupRestoVisible = false;
-    document.body.classList.remove('blurred');
-  }
-
-  
-  showPopupClient() {
-    this.isPopupClientVisible = true;
-    document.body.classList.add('blurred');
-  }
-
-  hidePopupClient() {
-    this.isPopupClientVisible = false;
-    document.body.classList.remove('blurred');
-  }
   toastMessages: string[] = [];
   showToast(msg: string) {
     this.toastMessages.push(msg);
@@ -326,6 +294,7 @@ export class AdminSpaceComponent {
       this.food.photos.splice(index, 1);
     }
   }
+  
   registerFood(form: NgForm) {
     if (form.valid && this.food.photos.length > 0) {
       const formData = new FormData();
@@ -334,7 +303,7 @@ export class AdminSpaceComponent {
       this.food.photos.forEach((file) => {
         formData.append('photos', file, file.name);
       });
-  
+
       this.foodService.createFood(formData).subscribe(
         response => {
           console.log('Food created successfully', response);
@@ -350,5 +319,38 @@ export class AdminSpaceComponent {
       console.log('Form is invalid or files are missing');
     }
   }
+
+
+
+  showPopupClient() {
+    this.isPopupClientVisible = true;
+    document.body.classList.add('blurred');
+  }
+  
+  hidePopupClient() {
+    this.isPopupClientVisible = false;
+    document.body.classList.remove('blurred');
+  }
+  
+  showPopup() {
+    this.isPopupVisible = true;
+    document.body.classList.add('blurred');
+  }
+  
+  hidePopup() {
+    this.isPopupVisible = false;
+    document.body.classList.remove('blurred');
+  }
+  
+  showPopupRestaurant() {
+    this.isPopupRestoVisible = true;
+    document.body.classList.add('blurred');
+  }
+  
+  hidePopupRestaurant() {
+    this.isPopupRestoVisible = false;
+    document.body.classList.remove('blurred');
+  }
+  
   
 }
