@@ -11,7 +11,7 @@ import { fileURLToPath } from 'url';
 
 import passport from './config/passport.js';
 import cookieSession from 'cookie-session';
-
+import foodRoutes from './routes/foodRoutes.js'; 
 
 dotenv.config();
 
@@ -31,12 +31,16 @@ app.use(cookieSession({
 app.use(express.json()); 
 app.use(cors());
 app.get('/', (_req, res) => res.send('hello wico back?'));
+app.use('/public', express.static(path.join(__dirname, 'public')));
+app.use('/public/images', express.static('public/images')); 
 
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api', categoryRoutes);
 app.use('/api', clientRoutes);
-app.use('/public', express.static(path.join(__dirname, 'public')));
+app.use('/api/foods', foodRoutes); 
+
+
 
 // Server
 app.listen(PORT, () => {
