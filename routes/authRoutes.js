@@ -2,7 +2,7 @@
 import { Router } from 'express';
 import multer from 'multer';
 import { registerAdmin, loginAdmin, registerLivreur, updateLivreur, deleteLivreur, registerCompany, updateCompany, deleteCompany , getAllLivreurs, getAllCompanies } from '../controller/authController.js';
-
+import authMiddleware from '../middleware/authMiddleware.js';
 import passport from 'passport';
 
 
@@ -20,18 +20,19 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+// Routes sans authentification
 router.post('/registerAdmin', registerAdmin);
 router.post('/loginAdmin', loginAdmin);
-router.post('/registerLivreur', upload.single('avatar'), registerLivreur);
-router.post('/registerCompany', upload.single('avatar'), registerCompany);
-router.put('/updateLivreur/:id', upload.single('avatar'), updateLivreur); 
-router.delete('/deleteLivreur/:id', deleteLivreur); 
-router.put('/updateCompany/:id', upload.single('avatar'), updateCompany); 
-router.delete('/deleteCompany/:id', deleteCompany);
 
-router.get('/getAllLivreurs', getAllLivreurs);
-router.get('/getAllCompanies', getAllCompanies);
-
+// Routes avec authentification
+router.post('/registerLivreur', authMiddleware, upload.single('avatar'), registerLivreur);
+router.post('/registerCompany', authMiddleware, upload.single('avatar'), registerCompany);
+router.put('/updateLivreur/:id', authMiddleware, upload.single('avatar'), updateLivreur); 
+router.delete('/deleteLivreur/:id', authMiddleware, deleteLivreur); 
+router.put('/updateCompany/:id', authMiddleware, upload.single('avatar'), updateCompany); 
+router.delete('/deleteCompany/:id', authMiddleware, deleteCompany);
+router.get('/getAllLivreurs', authMiddleware, getAllLivreurs);
+router.get('/getAllCompanies', authMiddleware, getAllCompanies);
 
 /************* AUTH USER WITH GOOGLE ******************/
 
