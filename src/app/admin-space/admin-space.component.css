@@ -133,6 +133,7 @@ body {
 .deconnexion-button {
     display: flex;
     align-items: center;
+    justify-content: center; 
     background-color: #00A896; 
     border: none;
     border-radius: 20px;
@@ -146,7 +147,8 @@ body {
     margin-left: 1250px;
     margin-top: -240px;
     position: relative; 
-    z-index: 1000; 
+    z-index: 10000; 
+    transition: background-color 0.3s, transform 0.3s; 
 }
 
 .deconnexion-button img {
@@ -157,7 +159,10 @@ body {
 
 .deconnexion-button:hover {
     background-color: #00796b; 
+    transform: scale(1.05); 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
 }
+
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@400;600&display=swap');
 .special-dish-section {
@@ -2253,3 +2258,97 @@ body.blurred {
     filter: blur(10px);
   }
   
+
+
+  .custom-confirmation-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s;
+}
+
+.custom-confirmation-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 55px;
+    text-align: center;
+    position: relative;
+    max-width: 280px;
+    width: 100%;
+    height: 320px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: scaleIn 0.3s;
+}
+
+.custom-confirmation-content .trash-icon {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+.custom-confirmation-content p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.confirm-button {
+    background-color: #FF4D4D;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    padding: 15px 40px;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-top: 10px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    display: inline-block;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+.cancel-button {
+    background-color: transparent;
+    color: #FF4D4D;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    transition: transform 0.3s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes scaleIn {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+}
+
+@keyframes scaleOut {
+    from { transform: scale(1); }
+    to { transform: scale(0); }
+}
+
+.hide {
+    animation: fadeOut 0.3s, scaleOut 0.3s;
+    animation-fill-mode: forwards;
+}

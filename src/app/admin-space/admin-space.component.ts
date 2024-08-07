@@ -7,6 +7,7 @@ import { CompanyService } from '../service/company.service';
 import { Router } from '@angular/router'; 
 import { AuthService } from '../service/services.service';
 import { FoodService } from '../service/food.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-admin-space',
@@ -71,7 +72,7 @@ export class AdminSpaceComponent {
   livreurs: any[] = [];
   companies: any[] = [];
 
-  constructor(private clientService: ClientService, private livreurService: LivreurService, private companyService: CompanyService,private router: Router,  private authService: AuthService ,  private foodService: FoodService) { }
+  constructor(private clientService: ClientService, private livreurService: LivreurService, private companyService: CompanyService,private router: Router,  private authService: AuthService ,  private foodService: FoodService , private dialog: MatDialog) { }
 
 
 
@@ -241,7 +242,11 @@ export class AdminSpaceComponent {
     console.log('AdminSpaceComponent initialized');
   }
 
+
+ 
+
   logout() {
+    console.log('Logout method called in AuthService');
     this.authService.logout(); 
     this.router.navigate(['/login']);
   }
@@ -351,6 +356,106 @@ export class AdminSpaceComponent {
     this.isPopupRestoVisible = false;
     document.body.classList.remove('blurred');
   }
-  
-  
+ 
+  showDeletePopup: boolean = false;
+  entityToDelete: { id: string | null, type: 'client' | 'company' | 'livreur' } = { id: null, type: 'client' };
+
+  // Existing methods
+
+  loadClients() {
+    this.clientService.getAllClients().subscribe(
+      clients => {
+        this.clients = clients;
+      },
+      error => {
+        console.error('Error fetching clients', error);
+      }
+    );
+  }
+
+  deleteClient(identifiant: string) {
+    this.entityToDelete = { id: identifiant, type: 'client' };
+    this.showDeletePopup = true;
+  }
+
+  deleteCompany(userId: string) {
+    this.entityToDelete = { id: userId, type: 'company' };
+    this.showDeletePopup = true;
+  }
+
+  deleteLivreur(userId: string) {
+    this.entityToDelete = { id: userId, type: 'livreur' };
+    this.showDeletePopup = true;
+  }
+
+  confirmDelete() {
+    if (this.entityToDelete.id) {
+      if (this.entityToDelete.type === 'client') {
+        this.clientService.deleteClient(this.entityToDelete.id).subscribe(
+          response => {
+            console.log('Client deleted successfully', response);
+            this.showToast('Client supprimé avec succès');
+            this.loadClients();
+          },
+          error => {
+            console.error('Error deleting client', error);
+            this.showToastError('Erreur lors de la suppression du client');
+          }
+        );
+      } else if (this.entityToDelete.type === 'company') {
+        this.companyService.deleteCompany(this.entityToDelete.id).subscribe(
+          response => {
+            console.log('Company deleted successfully', response);
+            this.showToast('Entreprise supprimée avec succès');
+            this.loadCompanies();
+          },
+          error => {
+            console.error('Error deleting company', error);
+            this.showToastError('Erreur lors de la suppression de l\'entreprise');
+          }
+        );
+      } else if (this.entityToDelete.type === 'livreur') {
+        this.livreurService.deleteLivreur(this.entityToDelete.id).subscribe(
+          response => {
+            console.log('Livreur deleted successfully', response);
+            this.showToast('Livreur supprimé avec succès');
+            this.loadLivreurs();
+          },
+          error => {
+            console.error('Error deleting livreur', error);
+            this.showToastError('Erreur lors de la suppression du livreur');
+          }
+        );
+      }
+    }
+    this.cancelDelete();
+  }
+
+  cancelDelete() {
+    this.entityToDelete = { id: null, type: 'client' };
+    this.showDeletePopup = false;
+  }
+
+  loadCompanies() {
+    this.companyService.getAllCompanies().subscribe(
+      companies => {
+        this.companies = companies;
+      },
+      error => {
+        console.error('Error fetching companies', error);
+      }
+    );
+  }
+
+  loadLivreurs() {
+    this.livreurService.getAllLivreurs().subscribe(
+      livreurs => {
+        this.livreurs = livreurs;
+      },
+      error => {
+        console.error('Error fetching livreurs', error);
+      }
+    );
+  }
+
 }

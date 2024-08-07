@@ -15,10 +15,10 @@
                     Your browser does not support the video tag.
                 </video>
             </div>
-            <button class="deconnexion-button">
-                <img src="/assets/user_icon.png" alt="Icon"> Deconnexion
+            <button class="deconnexion-button" (click)="logout()">
+                <img src="/assets/user_icon.png" alt="Icon"> Déconnexion
             </button>
-            <p class="styled-text">Speedoza</p>
+            <p class="styled-text" >Speedoza</p>
         </div>
     </header>
     
@@ -59,7 +59,7 @@
             <p class="special-dish-description">
                 Inscrivez-vous dès aujourd'hui et commencez à livrer des <br> repas à nos clients !
             </p>
-            <button class="add-delivery-person-button" (click)="showPopup()" style="margin-left: -3px;">Ajouter un livreur</button>
+            <button class="add-delivery-person-button" (click)="showPopup()" style="margin-left: -3px;" >Ajouter un livreur</button>
           
         </div>
        
@@ -422,8 +422,8 @@
                     <span class="unique-tag unique-tag-client">Client</span>
                     <button class="unique-action-button unique-edit-button">
                         <img src="assets/user-edit.png" alt="Edit">
-                    </button>
-                    <button class="unique-action-button unique-delete-button">
+                    </button >
+                    <button class="unique-action-button unique-delete-button" (click)="deleteClient(client.identifiant!)" >
                         <img src="assets/delete.png" alt="Delete">
                     </button>
                 </div>
@@ -512,7 +512,7 @@
                       <button class="unique-action-button unique-edit-button">
                           <img src="assets/user-edit.png" alt="Edit">
                       </button>
-                      <button class="unique-action-button unique-delete-button">
+                      <button class="unique-action-button unique-delete-button" (click)="deleteLivreur(livreur.user._id)">
                           <img src="assets/delete.png" alt="Delete">
                       </button>
                   </div>
@@ -599,7 +599,7 @@
                       <button class="unique-action-button unique-edit-button">
                           <img src="assets/user-edit.png" alt="Edit">
                       </button>
-                      <button class="unique-action-button unique-delete-button">
+                      <button class="unique-action-button unique-delete-button" (click)="deleteCompany(company.user._id)" >
                           <img src="assets/delete.png" alt="Delete">
                       </button>
                   </div>
@@ -670,6 +670,15 @@
 <div class="food-list-backdrop" *ngIf="isFoodListPopupVisible" (click)="hideFoodPopup()"></div>
 
 
+<!-- Custom Confirmation Popup -->
+<div class="custom-confirmation-overlay" *ngIf="showDeletePopup">
+  <div class="custom-confirmation-content">
+    <img src="assets/Pngtree-delete.png" alt="Trash Icon" class="trash-icon">
+    <p style=" font-family: 'Outfit'; font-weight: 600; font-size: 20px; margin-top: -10px;">Êtes-vous sûr de vouloir supprimer ce client ?</p>
+    <button class="confirm-button" (click)="confirmDelete()" >Oui, Supprimer</button>
+    <button class="cancel-button" (click)="cancelDelete()" style="font-family: Outfit; font-weight: lighter; margin-top: 15px;">Garder le compte</button>
+  </div>
+</div>
 
 
 <script>

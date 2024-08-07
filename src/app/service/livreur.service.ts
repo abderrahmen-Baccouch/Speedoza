@@ -26,4 +26,10 @@ export class LivreurService {
     const headers = this.getAuthHeaders();
     return this.http.get<any[]>(`${this.apiUrl}/getAllLivreurs`, { headers });
   }
+
+  deleteLivreur(id: string): Observable<any> {
+    const headers = this.getAuthHeaders();
+    return this.http.delete(`${this.apiUrl}/deleteLivreur/${id}`, { headers });
+  }
+  
 }

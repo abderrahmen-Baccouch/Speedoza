@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { AuthService } from './services.service'; 
 
 export interface Client {
+  identifiant?: string;
   id?: string;
   name: string;
   email: string;
@@ -36,11 +37,11 @@ export class ClientService {
     return this.http.put(`${this.apiUrl}/updateClient/${id}`, client, { headers });
   }
 
-  deleteClient(id: string): Observable<any> {
+  deleteClient(identifiant: string): Observable<any> {
     const headers = this.getAuthHeaders();
-    return this.http.delete(`${this.apiUrl}/deleteClient/${id}`, { headers });
+    return this.http.delete(`${this.apiUrl}/deleteClient/${identifiant}`, { headers });
   }
-
+  
   getAllClients(): Observable<Client[]> {
     const headers = this.getAuthHeaders();
     return this.http.get<Client[]>(`${this.apiUrl}/getAllClients`, { headers });
