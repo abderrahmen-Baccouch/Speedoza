@@ -6,7 +6,7 @@ const router = Router();
 
 router.post('/createClient', authMiddleware, createClient);
 router.put('/updateClient/:id', authMiddleware, updateClient); 
-router.delete('/deleteClient/:id', authMiddleware, deleteClient); 
+router.delete('/deleteClient/:identifiant', authMiddleware, deleteClient); 
 router.get('/getAllClients', authMiddleware, getAllClients);
 
 
