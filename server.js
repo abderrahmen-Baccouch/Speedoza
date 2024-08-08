@@ -1,3 +1,15 @@
+
+import express from 'express';
+import dotenv from 'dotenv';
+import connectDB from './config/dbConfig.js';
+import authRoutes from './routes/authRoutes.js';
+import categoryRoutes from './routes/categoryRoutes.js';
+import clientRoutes from './routes/clientRoutes.js';
+import cors from 'cors';
+
+import path from 'path';
+import { fileURLToPath } from 'url';
+
 import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./config/dbConfig.js";
@@ -13,6 +25,7 @@ import passport from "./config/passport.js";
 import cookieSession from "cookie-session";
 import foodRoutes from "./routes/foodRoutes.js";
 import restauProductRoutes from "./routes/restauProductRoutes.js";
+
 dotenv.config();
 
 const app = express();
@@ -36,11 +49,14 @@ app.use("/public", express.static(path.join(__dirname, "public")));
 app.use("/public/images", express.static("public/images"));
 
 // Routes
-app.use("/api/auth", authRoutes);
-app.use("/api", categoryRoutes);
-app.use("/api", clientRoutes);
-app.use("/api/foods", foodRoutes);
-app.use("/api/restauproducts", restauProductRoutes);
+
+app.use('/api/auth', authRoutes);
+app.use('/api', categoryRoutes);
+app.use('/api', clientRoutes);
+app.use('/api/foods', foodRoutes); 
+app.use('/api/productPercentages', productPercentageRoutes);
+
+
 
 // Server
 app.listen(PORT, () => {
