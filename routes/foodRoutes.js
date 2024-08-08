@@ -3,7 +3,9 @@
 import express from 'express';
 import { createFood, getAllFoods } from '../controller/foodController.js';
 import multer from 'multer';
+
 import authMiddleware from '../middleware/authMiddleware.js';
+
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -17,7 +19,7 @@ const upload = multer({ storage });
 
 const router = express.Router();
 
-router.post('/createFood', authMiddleware, upload.array('photos', 2), createFood);
-router.get('/getAllFoods', authMiddleware, getAllFoods);
+router.post('/createFood', upload.array('photos', 2), createFood);
+router.get('/getAllFoods', getAllFoods);
 
 export default router;
