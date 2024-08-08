@@ -166,7 +166,7 @@ async function sendPasswordEmail(recipientEmail, password) {
 export { sendPasswordEmail };
 
 export  async function registerLivreur (req, res) {
-    const { name, email, password, phone, cin, vehicleType, availabilityStatus } = req.body;
+    const { name, email, phone, cin, vehicleType, availabilityStatus } = req.body;
     
     try {
         let user = await User.findOne({ email });
@@ -660,6 +660,9 @@ export async function loginUser(req,res){
             return res.status(400).json({ message: "Invalid credentials" });
         }
 
+        if(user.role !== 'Client'){
+            return res.status(403).json({ message: "Access denied" });
+        }
         const payload = {
             user: {
                 id: user.id,
