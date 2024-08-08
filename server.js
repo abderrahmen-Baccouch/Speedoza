@@ -10,7 +10,6 @@ import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./config/dbConfig.js";
 import authRoutes from "./routes/authRoutes.js";
