@@ -1,7 +1,11 @@
 
 import { Router } from 'express';
 import multer from 'multer';
-import { registerAdmin, loginAdmin, registerLivreur, updateLivreur, deleteLivreur, registerCompany, updateCompany, deleteCompany , getAllLivreurs, getAllCompanies } from '../controller/authController.js';
+import { registerAdmin, loginAdmin, registerLivreur, updateLivreur, deleteLivreur,
+   registerCompany, updateCompany, deleteCompany , getAllLivreurs, getAllCompanies,
+   registerUser, loginUser
+  
+  } from '../controller/authController.js';
 import authMiddleware from '../middleware/authMiddleware.js';
 import passport from 'passport';
 
@@ -23,6 +27,9 @@ const upload = multer({ storage: storage });
 // Routes sans authentification
 router.post('/registerAdmin', registerAdmin);
 router.post('/loginAdmin', loginAdmin);
+
+router.post('/registerUser', registerUser);
+router.post('/loginUser', loginUser);
 
 // Routes avec authentification
 router.post('/registerLivreur', authMiddleware, upload.single('avatar'), registerLivreur);
