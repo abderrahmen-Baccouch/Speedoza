@@ -12,6 +12,7 @@ import { fileURLToPath } from 'url';
 import passport from './config/passport.js';
 import cookieSession from 'cookie-session';
 import foodRoutes from './routes/foodRoutes.js'; 
+import productPercentageRoutes from './routes/productPercentageRoutes.js';
 
 dotenv.config();
 
@@ -39,6 +40,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api', categoryRoutes);
 app.use('/api', clientRoutes);
 app.use('/api/foods', foodRoutes); 
+app.use('/api/productPercentages', productPercentageRoutes);
 
 
 
