@@ -4,6 +4,8 @@ import express from 'express';
 import { createFood, getAllFoods } from '../controller/foodController.js';
 import multer from 'multer';
 
+import authMiddleware from '../middleware/authMiddleware.js';
+
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {

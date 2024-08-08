@@ -13,7 +13,6 @@ import passport from "./config/passport.js";
 import cookieSession from "cookie-session";
 import foodRoutes from "./routes/foodRoutes.js";
 import restauProductRoutes from "./routes/restauProductRoutes.js";
-
 dotenv.config();
 
 const app = express();
