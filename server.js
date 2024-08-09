@@ -6,25 +6,13 @@ import authRoutes from './routes/authRoutes.js';
 import categoryRoutes from './routes/categoryRoutes.js';
 import clientRoutes from './routes/clientRoutes.js';
 import cors from 'cors';
-
+import productPercentageRoutes from './routes/productPercentageRoutes.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
-
-import express from "express";
-import dotenv from "dotenv";
-import connectDB from "./config/dbConfig.js";
-import authRoutes from "./routes/authRoutes.js";
-import categoryRoutes from "./routes/categoryRoutes.js";
-import clientRoutes from "./routes/clientRoutes.js";
-import cors from "cors";
-
-import path from "path";
-import { fileURLToPath } from "url";
 
 import passport from "./config/passport.js";
 import cookieSession from "cookie-session";
 import foodRoutes from "./routes/foodRoutes.js";
-import restauProductRoutes from "./routes/restauProductRoutes.js";
 
 dotenv.config();
 
