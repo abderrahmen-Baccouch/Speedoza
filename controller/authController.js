@@ -691,4 +691,49 @@ export async function loginUser(req,res){
 
 
 
+export async function loginLivreur(req,res){
+    try {
+        const { email, password } = req.body;
+
+        let user = await User.findOne({ email });
+        if (!user) {
+            return res.status(400).json({ message: "Invalid credentials" });
+        }
+
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return res.status(400).json({ message: "Invalid credentials" });
+        }
+
+        if(user.role !== 'Livreur'){
+            return res.status(403).json({ message: "Access denied" });
+        }
+        const payload = {
+            user: {
+                id: user.id,
+                role: user.role
+            }
+        };
+
+      const token=  jwt.sign(
+            payload,
+            process.env.JWT_SECRET,
+            { expiresIn: '1h' },
+            (err, token) => {
+                if (err) throw err;
+                res.status(200).json({ token });
+            }
+        );
+
+        return
+
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Server Error" });
+    }
+}
+
+
+
 

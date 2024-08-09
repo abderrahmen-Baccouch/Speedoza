@@ -6,13 +6,13 @@ import authRoutes from './routes/authRoutes.js';
 import categoryRoutes from './routes/categoryRoutes.js';
 import clientRoutes from './routes/clientRoutes.js';
 import cors from 'cors';
-import productPercentageRoutes from './routes/productPercentageRoutes.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
-
-import passport from "./config/passport.js";
-import cookieSession from "cookie-session";
-import foodRoutes from "./routes/foodRoutes.js";
+import passport from './config/passport.js';
+import cookieSession from 'cookie-session';
+import foodRoutes from './routes/foodRoutes.js';
+import restauProductRoutes from './routes/restauProductRoutes.js';
+import productPercentageRoutes from './routes/productPercentageRoutes.js'
 
 dotenv.config();
 
@@ -43,6 +43,7 @@ app.use('/api', categoryRoutes);
 app.use('/api', clientRoutes);
 app.use('/api/foods', foodRoutes); 
 app.use('/api/productPercentages', productPercentageRoutes);
+app.use('/api/restauProducts', restauProductRoutes);
 
 
 
