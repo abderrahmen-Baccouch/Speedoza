@@ -17,7 +17,7 @@ export async function createRestauProduct(req, res) {
   } = req.body;
 
   try {
-    const user = await User.findById(userId);
+    const user = await User.findById({_id:userId});
     const foodItem = await Food.findById({_id:foodId}); // Renamed to avoid conflict
     console.log(foodId);
     if (!foodItem) {
