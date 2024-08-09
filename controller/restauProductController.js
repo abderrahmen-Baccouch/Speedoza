@@ -18,8 +18,8 @@ export async function createRestauProduct(req, res) {
 
   try {
     const user = await User.findById(userId);
-    const foodItem = await Food.findById(foodId);
-
+    const foodItem = await Foood.findById({_id:foodId}); // Renamed to avoid conflict
+    console.log(foodId);
     if (!foodItem) {
       return res.status(404).json({ message: "Food item not found" });
     }
