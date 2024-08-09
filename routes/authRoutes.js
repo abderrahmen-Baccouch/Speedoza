@@ -3,7 +3,7 @@ import { Router } from 'express';
 import multer from 'multer';
 import { registerAdmin, loginAdmin, registerLivreur, updateLivreur, deleteLivreur,
    registerCompany, updateCompany, deleteCompany , getAllLivreurs, getAllCompanies,
-   registerUser, loginUser,loginLivreur
+   registerUser, loginUser,loginLivreur,loginCompany
   
   } from '../controller/authController.js';
 import authMiddleware from '../middleware/authMiddleware.js';
@@ -31,6 +31,7 @@ router.post('/loginLivreur', loginLivreur);
 
 router.post('/registerUser', registerUser);
 router.post('/loginUser', loginUser);
+router.post('/loginCompany', loginCompany);
 
 // Routes avec authentification
 router.post('/registerLivreur', authMiddleware, upload.single('avatar'), registerLivreur);
