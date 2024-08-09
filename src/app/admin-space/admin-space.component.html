@@ -20,6 +20,8 @@
             </button>
             <p class="styled-text" >Speedoza</p>
         </div>
+    
+
     </header>
     
     <div class="content">
@@ -41,12 +43,13 @@
             </div>
             <div class="icon-text">Catégorie</div>
         </div>
-        <div class="icon-container" (click)="showClientPopup()">
+      <div class="icon-container"  (click)="showProductPercentagePopup()">    <!-- (click)="showClientPopup()" -->
           <div class="icon">
             <img src="https://freepngimg.com/save/70865-money-dollar-bag-download-hd-png/1024x979" alt="Icon">
           </div>
           <div class="icon-text">Clients</div>
         </div>
+   
         
     </div>
    
@@ -59,7 +62,7 @@
             <p class="special-dish-description">
                 Inscrivez-vous dès aujourd'hui et commencez à livrer des <br> repas à nos clients !
             </p>
-            <button class="add-delivery-person-button" (click)="showPopup()" style="margin-left: -3px;" >Ajouter un livreur</button>
+            <button class="add-delivery-person-button" (click)="showPopup()"(click)="logout()" style="margin-left: -3px;" >Ajouter un livreur</button>
           
         </div>
        
@@ -509,7 +512,7 @@
               </div>
               <div class="unique-livreur-actions">
                   <div class="unique-action-buttons-liv">
-                      <button class="unique-action-button unique-edit-button">
+                      <button class="unique-action-button unique-edit-button" >
                           <img src="assets/user-edit.png" alt="Edit">
                       </button>
                       <button class="unique-action-button unique-delete-button" (click)="deleteLivreur(livreur.user._id)">
@@ -680,8 +683,90 @@
   </div>
 </div>
 
+<!-- Product Percentage Popup -->
+<div *ngIf="isProductPercentagePopupVisible" class="product-percentage-popup-overlay">
+  <div class="product-percentage-popup-content">
+    <!-- Header Section -->
+    <div class="product-percentage-popup-header">
+      <h2 class="title-section">La meilleure <br>nourriture délicieuse</h2>
+      <h3 class="subtitle-section">Mettre en place les tendances de cette saison</h3>
+      <span class="red-dot"></span>
+      <button class="product-percentage-close-button" (click)="hideProductPercentagePopup()">&times;</button>
+    </div>
+
+    <!-- Product Cards Section -->
+    <div class="product-card" style="margin-top: -20px;">
+      <div class="image-container">
+        <img src="/assets/drinks.png" alt="drinks Icon">
+      </div>
+      <p>drinks</p>
+    </div>
+    <div class="product-card" style="margin-left: 150px; margin-top: -97px;">
+      <div class="image-container">
+        <img src="/assets/pngtree-burger.png" alt="burger Icon">
+      </div>
+      <p>burger</p>
+    </div>
+    <div class="product-card" style="margin-left: 230px; margin-top: -97px;">
+      <div class="image-container">
+        <img src="/assets/pngtree-pizza.png" alt="pizza Icon">
+      </div>
+      <p>pizza</p>
+    </div>
+    <div class="product-card" style="margin-left: 310px; margin-top: -97px;">
+      <div class="image-container">
+        <img src="/assets/dessert.png" alt="dessert Icon">
+      </div>
+      <p>dessert</p>
+    </div>
+    <div class="product-card" style="margin-left: 390px; margin-top: -97px;">
+      <div class="image-container">
+        <img src="/assets/salade.png" alt="salade Icon">
+      </div>
+      <p>salade</p>
+    </div>
+
+    <!-- Input Fields for Description and Percentage -->
+    <form (ngSubmit)="onProductPercentageSubmit()">
+      <div class="product-percentage-input-container" style="margin-top: 25px; margin-left: -630px;">
+        <div class="product-percentage-input-wrapper">
+          <input type="text" id="description" placeholder="Enter la description" class="product-percentage-custom-input" [(ngModel)]="productPercentage.description" name="description" required>
+        </div>
+      </div>
+      <div class="product-percentage-input-container" style="margin-top: 10px; margin-left: -630px;">
+        <div class="product-percentage-input-wrapper">
+          <input type="number" id="percentage" placeholder="Enter la pourcentage" class="product-percentage-custom-input no-spinner" [(ngModel)]="productPercentage.percentage" name="percentage" required>
+          <button type="submit" class="product-percentage-custom-button">
+            <svg width="16" height="16" viewBox="0 0 24 24" style="margin-top: 2px; margin-left:2px;">
+              <path fill="#FFF" d="M12 2L10.59 3.41 16.17 9H2V11H16.17L10.59 16.59L12 18L20 10L12 2Z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <!-- Cerise Image -->
+    <div class="cerise-image">
+      <img src="/assets/file-dessert.png" width="200px" height="200px">
+    </div>
+
+    <!-- Popup Body Product -->
+    <div class="popup-body-Product">
+      <form>
+        <div class="form-right">
+          <img src="/assets/rond-orange.png" alt="Sample Image" style="margin-right: -850px; max-width:90%; margin-top: -30px;">
+          <img src="/assets/image-rawpixel.png" alt="Sample Image-2" style="max-width: 55%; margin-right: 80px; margin-bottom: 200px;">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
 
 <script>
+
+
   function showPopup() {
       document.getElementById('popup').style.display = 'flex';
       document.getElementById('backdrop').style.display = 'block';

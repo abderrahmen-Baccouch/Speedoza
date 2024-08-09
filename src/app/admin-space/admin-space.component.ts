@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../service/services.service';
 import { FoodService } from '../service/food.service';
 import { MatDialog } from '@angular/material/dialog';
+import { ProductPercentage, ProductPercentageService } from '../service/product-percentage.service';
 
 @Component({
   selector: 'app-admin-space',
@@ -22,7 +23,7 @@ export class AdminSpaceComponent {
   isPopupRestoVisible = false ;
   isPopupClientVisible = false ;
   msgError: string = 'Client existe déjà';
-
+  isProductPercentagePopupVisible = false;
   isClientListPopupVisible = false;
   isCompanyListPopupVisible = false;
 
@@ -71,8 +72,13 @@ export class AdminSpaceComponent {
   clients: Client[] = [];
   livreurs: any[] = [];
   companies: any[] = [];
-
-  constructor(private clientService: ClientService, private livreurService: LivreurService, private companyService: CompanyService,private router: Router,  private authService: AuthService ,  private foodService: FoodService , private dialog: MatDialog) { }
+  
+  productPercentage: ProductPercentage = {
+    percentage: 0,
+    description: ''
+  };
+  
+  constructor(private clientService: ClientService, private livreurService: LivreurService, private companyService: CompanyService,private router: Router,  private authService: AuthService ,  private foodService: FoodService , private dialog: MatDialog, private productPercentageService: ProductPercentageService) { }
 
 
 
@@ -394,7 +400,7 @@ export class AdminSpaceComponent {
         this.clientService.deleteClient(this.entityToDelete.id).subscribe(
           response => {
             console.log('Client deleted successfully', response);
-            this.showToast('Client supprimé avec succès');
+            this.showToast('Supprimé avec succès');
             this.loadClients();
           },
           error => {
@@ -406,7 +412,7 @@ export class AdminSpaceComponent {
         this.companyService.deleteCompany(this.entityToDelete.id).subscribe(
           response => {
             console.log('Company deleted successfully', response);
-            this.showToast('Entreprise supprimée avec succès');
+            this.showToast('Supprimée avec succès');
             this.loadCompanies();
           },
           error => {
@@ -418,7 +424,7 @@ export class AdminSpaceComponent {
         this.livreurService.deleteLivreur(this.entityToDelete.id).subscribe(
           response => {
             console.log('Livreur deleted successfully', response);
-            this.showToast('Livreur supprimé avec succès');
+            this.showToast('Supprimé avec succès');
             this.loadLivreurs();
           },
           error => {
@@ -457,5 +463,33 @@ export class AdminSpaceComponent {
       }
     );
   }
+
+  showProductPercentagePopup() {
+    this.isProductPercentagePopupVisible = true;
+  }
+
+  hideProductPercentagePopup() {
+    this.isProductPercentagePopupVisible = false;
+  }
+
+
+onProductPercentageSubmit() {
+  if (this.productPercentage.description && this.productPercentage.percentage) {
+    this.productPercentageService.createProductPercentage(this.productPercentage).subscribe(
+      response => {
+        console.log('Product percentage created successfully', response);
+        this.hideProductPercentagePopup();
+        this.showToast('Crée avec succè!'); 
+      },
+      error => {
+        console.error('Error creating product percentage', error);
+        this.showToastError('Error creating product percentage'); 
+      }
+    );
+  } else {
+    alert('Please fill in all fields');
+  }
+}
+
 
 }

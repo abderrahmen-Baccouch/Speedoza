@@ -32,4 +32,9 @@ export class LivreurService {
     return this.http.delete(`${this.apiUrl}/deleteLivreur/${id}`, { headers });
   }
   
+  updateLivreur(id: string, livreur: FormData): Observable<any> {
+    const headers = this.getAuthHeaders();
+    return this.http.put(`${this.apiUrl}/updateLivreur/${id}`, livreur, { headers });
+  }
+
 }
