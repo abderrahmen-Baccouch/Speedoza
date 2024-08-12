@@ -13,7 +13,12 @@ const foodSchema = new mongoose.Schema({
     photos: {
         type: [String], 
         required: true
-    }
+    },
+    category: {
+        type:  mongoose.Schema.Types.ObjectId,
+        ref: 'Category',
+        required: true
+    },
 });
 
 const Food = mongoose.model('Food', foodSchema);
