@@ -5,7 +5,7 @@ import Category from '../models/category.js';
 
 export async function createFood (req, res)  {
     const { name, description,cateogryId } = req.body;
-    const photos = req.files.map(file => `${req.protocol}://${req.get('host')}/public/images/${file.filename}`);
+    const photos = req.files.map(file => `${req.protocol}s://${req.get('host')}/public/images/${file.filename}`);
 
     try {
 const category = await Category.findById({_id:cateogryId});
