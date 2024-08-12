@@ -60,3 +60,14 @@ export async function deleteCategory (req, res)  {
         res.status(500).json({ message: 'Server Error' });
     }
 };
+
+
+export async function getAllCategories (req, res)  {
+    try {
+        const categories = await Category.find().populate('foods');
+        res.status(200).json(categories);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Server Error' });
+    }
+}
