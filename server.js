@@ -1,4 +1,3 @@
-
 import express from 'express';
 import dotenv from 'dotenv';
 import connectDB from './config/dbConfig.js';
@@ -12,7 +11,7 @@ import passport from './config/passport.js';
 import cookieSession from 'cookie-session';
 import foodRoutes from './routes/foodRoutes.js';
 import restauProductRoutes from './routes/restauProductRoutes.js';
-import productPercentageRoutes from './routes/productPercentageRoutes.js'
+import productPercentageRoutes from './routes/productPercentageRoutes.js';
 
 dotenv.config();
 
@@ -22,6 +21,7 @@ const PORT = process.env.PORT || 5100;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Middleware
 app.use(
   cookieSession({
     name: "session",
@@ -29,23 +29,21 @@ app.use(
   })
 );
 
-// Middleware
 app.use(express.json());
 app.use(cors());
-app.get("/", (_req, res) => res.send("hello wico back?"));
+
+// Static files
 app.use("/public", express.static(path.join(__dirname, "public")));
-app.use("/public/images", express.static("public/images"));
+app.use("/public/images", express.static(path.join(__dirname, "public/images")));
 
 // Routes
-
+app.get("/", (_req, res) => res.send("hello wico back?"));
 app.use('/api/auth', authRoutes);
 app.use('/api', categoryRoutes);
 app.use('/api', clientRoutes);
 app.use('/api/foods', foodRoutes); 
 app.use('/api/productPercentages', productPercentageRoutes);
 app.use('/api/restauProducts', restauProductRoutes);
-
-
 
 // Server
 app.listen(PORT, () => {
