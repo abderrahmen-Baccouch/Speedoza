@@ -20,12 +20,11 @@
             </button>
             <p class="styled-text" >Speedoza</p>
         </div>
-    
-
     </header>
-    
+   
     <div class="content">
         <div class="icon-container" (click)="showCompanyPopup()">
+         
             <div class="icon">
                 <img style="margin-top: 5px; margin-right: 5px;" src="https://freepngimg.com/save/139206-food-plate-top-snack-view/528x525" alt="Icon">
             </div>
@@ -43,18 +42,21 @@
             </div>
             <div class="icon-text">Catégorie</div>
         </div>
-      <div class="icon-container"  (click)="showProductPercentagePopup()">    <!-- (click)="showClientPopup()" -->
+      <div class="icon-container" (click)="showClientPopup()">   
           <div class="icon">
             <img src="https://freepngimg.com/save/70865-money-dollar-bag-download-hd-png/1024x979" alt="Icon">
           </div>
           <div class="icon-text">Clients</div>
         </div>
-   
-        
+      
     </div>
-   
+
+    <div class="promotion-icon-container"  (click)="showProductPercentagePopup()">
+      <img src="/assets/promotion.png" alt="Icon" width="170px" height="150px">
+   </div>
 
 
+   <div class="responsive-way">
     <div class="special-dish-section" >
         <img src="/assets/food-delivery-application.png" alt="Food Delivery" class="special-dish-image" style="margin-right: -260px;">
         <div class="special-dish-text">
@@ -62,7 +64,7 @@
             <p class="special-dish-description">
                 Inscrivez-vous dès aujourd'hui et commencez à livrer des <br> repas à nos clients !
             </p>
-            <button class="add-delivery-person-button" (click)="showPopup()"(click)="logout()" style="margin-left: -3px;" >Ajouter un livreur</button>
+            <button class="add-delivery-person-button" (click)="showPopup()" style="margin-left: -3px;" >Ajouter un livreur</button>
           
         </div>
        
@@ -88,13 +90,12 @@
           <p class="special-dish-description_3">
             Inscrivez-vous et commencez à profiterde repas livrés  à votre porte !
           </p>
-          <button class="add-delivery-person-button_3" (click)="showPopupClient()" style="margin-left: 3px;">Ajouter un client</button>
-        
+          <button class="add-delivery-person-button_3" (click)="showPopupClient()" style="margin-left: 3px;">Ajouter un client</button> 
       </div>
-     
     </div>  
   
-   
+  </div>
+ 
 
     <!-- Popup for Adding Delivery Person -->
     <div class="modal" *ngIf="isPopupVisible">
