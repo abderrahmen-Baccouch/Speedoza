@@ -5,33 +5,40 @@ const restauProductSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  description: {
+  categoryId: {
+    type:mongoose.Schema.Types.ObjectId,
+    ref:'Category',
+
+  },
+  details: {
     type: String,
   },
-  price: [
-    {
-      type: Number,
-      required: true,
-    },
-  ],
-
-  ingredient: [
+  ingredients: [
     {
       type: String,
     },
   ],
-  size: {
-    type: String,
+  minPrice: {
+    type: Number,
+    required: true,
   },
-  user: {
+  mediumPrice: {
+    type: Number,
+    required: true,
+  },
+  maxPrice: {
+    type: Number,
+    required: true,
+  },
+  imagesBase64: [
+    {
+      type: String,
+    },
+  ],
+  userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
-    required: true,
-  },
-  food: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Food",
-    required: true,
+    
   },
 });
 
