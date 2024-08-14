@@ -54,8 +54,8 @@ export async function createRestauProduct(req, res) {
 export async function getAllRestauProducts(req, res) {
   try {
     const restauProducts = await RestauProduct.find()
-      .populate("user") // Populate user details as needed
-      .populate("category"); // Populate category details as needed
+      .populate("User") // Populate user details as needed
+      .populate("Category"); // Populate category details as needed
     res.status(200).json(restauProducts);
   } catch (error) {
     console.error(error);
