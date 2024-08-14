@@ -17,6 +17,6 @@ router.get("/getAllRestauProducts", getAllRestauProducts);
 router.put("/updateRestauProduct/:id", updateRestauProduct);
 router.delete("/deleteRestauProduct/:id", deleteRestauProduct);
 router.get("/getRestauProductById/:id", getRestauProductById);
-router.get("/getRestauProductByUserId/:id", getRestauProductByUserId);
+router.get("/getRestauProductByUserId/:userId", getRestauProductByUserId);
 
 export default router;
