@@ -208,9 +208,10 @@
           <div class="popup-inner-content">
             <div class="title-container" style="margin-left: 60px; margin-bottom: -10px;">  
                 <h2 class="popup-title" style="margin-left: -280px; margin-top: -180px; font-family:'Poppins'; font-weight: bold;">Rejoignez Notre Plateforme</h2>
-                <div class="underline"></div>
+                <div class="underline3"></div>
             </div>
               
+            <div class="company-input-wrapper"> 
             <form #companyForm="ngForm" (ngSubmit)="registerCompany(companyForm)">
               <div class="input-row">
                   <div class="input-container">
@@ -276,6 +277,7 @@
                 <button class="btn-solid" type="submit">ENREGISTRER!</button>
               </div>
             </form>
+            </div>
           </div>
       </div>
   </div>
@@ -319,27 +321,27 @@
 
                 <div class = "title-container" >  
                       <h2 class="popup-title" style=" margin-left: -295px; margin-top: -180px; font-family:'Poppins'; font-weight: bold; " >Rejoignez Nos Clients</h2>
-                      <div class="underline"></div>
+                      <div class="underline responsive-underline"></div>
                 </div>
-                <form #clientForm="ngForm" (ngSubmit)="registerClient(clientForm)" style="margin-top: 20px;">
+                <form #clientForm="ngForm" (ngSubmit)="registerClient(clientForm)" style="margin-top: 20px;" class="responsiveClient">
                   <div class="input-row">
                       <div class="input-container">
-                          <input type="text" id="name" class="styled-input" placeholder="Nom de client" style="font-family: 'Poppins'; font-weight: lighter;" [(ngModel)]="client.name" name="name" required>
+                          <input type="text" id="name" class="styled-input name-input" [placeholder]="namePlaceholder" style="font-family: 'Poppins'; font-weight: lighter;" [(ngModel)]="client.name" name="name" required>
                           <div *ngIf="clientForm.submitted && clientForm.controls['name'].errors?.['required']" class="error-message">Le nom est requis.</div>
                       </div>
                       <div class="input-container">
-                          <input type="email" id="email" class="styled-input" placeholder="Email de client" style="font-family: 'Poppins'; font-weight: lighter;" [(ngModel)]="client.email" name="email" required>
+                          <input type="email" id="email" class="styled-input email-input" [placeholder]="emailPlaceholder" style="font-family: 'Poppins'; font-weight: lighter;" [(ngModel)]="client.email" name="email" required>
                           <div *ngIf="clientForm.submitted && clientForm.controls['email'].errors?.['required']" class="error-message">L'email est requis.</div>
                       </div>
                   </div>    
               
                   <div class="input-row_4">
                       <div class="input-container_4" style="margin-left: 70px;">
-                          <input type="text" id="phone" class="styled-input" placeholder="Téléphone de client" style="font-family: 'Poppins'; font-weight: lighter;" [(ngModel)]="client.phone" name="phone" required>
+                          <input type="text" id="phone" class="styled-input phone-input" [placeholder]="phonePlaceholder" style=" font-family: 'Poppins'; font-weight: lighter;" [(ngModel)]="client.phone" name="phone" required>
                           <div *ngIf="clientForm.submitted && clientForm.controls['phone'].errors?.['required']" class="error-message">Le téléphone est requis.</div>
                       </div>
                       <div class="input-container_4">
-                          <input type="text" id="address" class="styled-input" placeholder="Adresse de client" style="font-family: 'Poppins'; font-weight: lighter;" [(ngModel)]="client.address" name="address" required>
+                          <input type="text" id="address" class="styled-input address-input"  [placeholder]="addressPlaceholder" style="font-family: 'Poppins'; font-weight: lighter;" [(ngModel)]="client.address" name="address" required>
                           <div *ngIf="clientForm.submitted && clientForm.controls['address'].errors?.['required']" class="error-message">L'adresse est requise.</div>
                       </div>
                   </div>    

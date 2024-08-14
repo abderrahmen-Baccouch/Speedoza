@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { ClientService, Client } from '../service/client.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { LivreurService } from '../service/livreur.service';
@@ -488,6 +488,35 @@ onProductPercentageSubmit() {
     );
   } else {
     alert('Please fill in all fields');
+  }
+}
+
+
+
+
+phonePlaceholder: string = 'Téléphone de client';
+namePlaceholder: string = 'Nom de client';
+emailPlaceholder: string = 'Email de client';
+addressPlaceholder: string = 'Adresse de client';
+
+@HostListener('window:resize', ['$event'])
+onResize() {
+  this.updatePlaceholders();
+}
+
+
+
+updatePlaceholders() {
+  if (window.innerWidth <= 900) {
+    this.phonePlaceholder = 'Tel Client';
+    this.namePlaceholder = 'Nom Client';
+    this.emailPlaceholder = 'Email Client';
+    this.addressPlaceholder = '@ Client';
+  } else {
+    this.phonePlaceholder = 'Téléphone de client';
+    this.namePlaceholder = 'Nom de client';
+    this.emailPlaceholder = 'Email de client';
+    this.addressPlaceholder = 'Adresse de client';
   }
 }
 
