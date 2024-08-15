@@ -55,7 +55,13 @@ export async function getAllRestauProducts(req, res) {
   try {
     const restauProducts = await RestauProduct.find()
     .populate("userId") // Populate user details as needed
-    .populate("categoryId"); // Populate category details as needed
+    .populate({
+      path: 'categoryId',
+      populate: {
+        path: 'foods',  // Populate foods within categoryId
+        model: 'Food'   // Replace with the actual model name for the Food schema
+      }
+    })
     res.status(200).json(restauProducts);
   } catch (error) {
     console.error(error);
@@ -136,7 +142,13 @@ export async function getRestauProductById(req, res) {
   try {
     const restauProduct = await RestauProduct.findById(id)
     .populate("userId") // Populate user details as needed
-    .populate("categoryId"); // Populate category details as needed
+    .populate({
+      path: 'categoryId',
+      populate: {
+        path: 'foods',  // Populate foods within categoryId
+        model: 'Food'   // Replace with the actual model name for the Food schema
+      }
+    })
     if (!restauProduct) {
       return res.status(404).json({ message: "RestauProduct not found" });
     }
@@ -152,11 +164,19 @@ export async function getRestauProductByUserId(req, res) {
 
   try {
     const restauProducts = await RestauProduct.find({ userId })
-      .populate("userId") // Populate user details as needed
-      .populate("categoryId"); // Populate category details as needed
+      .populate({
+        path: 'categoryId',
+        populate: {
+          path: 'foods',  // Populate foods within categoryId
+          model: 'Food'   // Replace with the actual model name for the Food schema
+        }
+      })
+      .populate('userId'); // Populate user details as needed
+
     if (!restauProducts.length) {
       return res.status(404).json({ message: "RestauProducts not found" });
     }
+
     res.status(200).json(restauProducts);
   } catch (error) {
     console.error(error);
