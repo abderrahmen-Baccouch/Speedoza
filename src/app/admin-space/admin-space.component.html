@@ -42,7 +42,8 @@
             </div>
             <div class="icon-text">Catégorie</div>
         </div>
-      <div class="icon-container" (click)="showClientPopup()">   
+      <!-- (click)="showClientPopup()"  -->
+        <div class="icon-container" (click)="showCreationfoodPopup()"> 
           <div class="icon">
             <img src="https://freepngimg.com/save/70865-money-dollar-bag-download-hd-png/1024x979" alt="Icon">
           </div>
@@ -766,6 +767,188 @@
 </div>
 
 
+
+<div *ngIf="isCreationfoodPopupVisible" class="creationfood-popup-overlay">
+  <div class="creationfood-popup-content">
+    <div class="inclined-popup"></div>
+     <!-- Header Section -->
+     <div class="product-percentage-popup-header">
+      <h2 class="title-section2">Des Plats  Savoureux<br> & Inégalés</h2>
+    </div>
+    <div style="margin-top: -100px; margin-left: 310px; margin-bottom: 50px; ">  <img src="/assets/upload.png" width="50px" > </div>
+
+   <div class="category-containers">
+      <span class="orange-dots"></span>
+      <span class="category-texts">Catégories</span>
+  </div>
+  
+    <div class="food-items-container">
+      <div class="food-item" >
+        <img src="/assets/vecteezy_hot-dog.png" alt="Burger" style="background-color: rgb(254, 216, 160);" >
+        
+      </div>
+      <div class="food-item">
+        <img src="/assets/vecteezy_beach-drink.png" alt="Pizza"  style="background-color: rgb(255, 230, 240); width: 40px;">
+      </div>
+
+      <div class="food-item-pizza" >
+        <div class="food-item-content-pizza" style="background-color: rgb(254, 216, 160);">
+          <div class="food-item-text-pizza">
+            <h3 class="h3-pizza">Pizza</h3>
+            <p class="p-pizza">$15.20</p>
+          </div>
+          <div class="pizzaClass1" >
+            <img src="/assets/vecteezy_pizza.png" alt="Pizza" class="food-item-image-pizza" >
+          </div>
+        </div>
+    </div>
+    
+      <div class="food-item">
+        <img src="/assets/vecteezy_3d-asian-food2.png.png" alt="Boisson"  style="background-color: rgb(255, 240, 231);">
+        
+      </div>
+     
+    </div>
+
+
+
+
+
+
+
+    <!-- Add more food items as needed -->
+    <div class="food-items-container" style="margin-top: 10px;">
+      <div class="food-item" >
+        <img src="/assets/vecteezy_chocolate.png" alt="Burger" style="background-color: rgb(255, 230, 240);" >
+        
+      </div>
+   
+
+      <div class="food-item-pizza">
+        <div class="food-item-content-pizza">
+          <div class="food-item-text-pizza">
+            <h3 class="h3-pizza">Burger</h3>
+            <p class="p-pizza">$17.05</p>
+          </div>
+          <div class="pizzaClass">
+            <img src="/assets/vecteezy_burger.png" alt="Pizza" class="food-item-image-pizza">
+          </div>
+        </div>
+    </div>
+
+
+      <div class="food-item" >
+        <img src="/assets/vecteezy_strawberry-donut.png" alt="Pizza"  style="background-color: rgb(255, 240, 231);">
+      </div>
+
+      
+    
+      <div class="food-item">
+        <img src="/assets/vecteezy_popcorn.png" alt="Boisson"  style="background-color: #ebffff;">
+        
+      </div>
+    </div>
+     
+    <div class="buttons-containers">
+      <span class="orange-dots"></span>
+      <span class="buttons-texts">Informations</span>
+  </div>
+
+    
+      <div class="product-percentage-input-container" style="margin-top: 25px; margin-left: -660px;">
+        <div class="product-percentage-input-wrapper">
+          <input type="text"  placeholder="Entrer le nom" class="product-percentage-custom-input">
+        </div>
+      </div>
+      <div class="product-percentage-input-container" style="margin-top: 10px; margin-left: -660px;">
+        <div class="product-percentage-input-wrapper">
+          <input type="number"  placeholder="Entrer la description" class="product-percentage-custom-input no-spinner" >
+  
+        </div>
+      </div>
+    
+      <button class="confirm-now-button" style="margin-left: 260px;">
+        <span class="confirm-icon-container">
+            <img src="/assets/confirm.png" alt="Shopping Bag" class="confirm-icon">
+        </span>
+     <div style="margin-left: 10px;">  Confirmer </div>
+    </button>
+    
+
+    <img src="/assets/spinach.png" width="100px" style="margin-top: -60px; margin-left: -90px;   filter: blur(2px); ">
+
+    <img src="/assets/rice.png" alt="zarla" class="inclined-image zarla-image"style=" width:450px;  " >
+    <div class="inclined-content">
+      <img src="/assets/photo-burger.png" alt="Burger" class="burger-image">
+      <img src="/assets/pizzaa-photo.png" alt="Pizza" class="inclined-image pizza-image">
+      <img src="/assets/photo-salade.png" alt="salade" class="inclined-image salade-image">
+      <img src="/assets/photo-boisson.png" alt="boisson" class="inclined-image boisson-image">
+      <img src="/assets/tacos-photo.png" alt="tacos" class="inclined-image tacos-image">
+      <img src="/assets/photo-frites.png" alt="frites" class="inclined-image frites-image">
+       <img src="/assets/photo-chicken-wings.png" alt="chicken" class="inclined-image chicken-image">
+       <img src="/assets/meat.png" alt="meat" class="inclined-image meat-image"> 
+       <img src="/assets/photo-spaghetti.png" alt="spaghetti" class="inclined-image spaghetti-image"> 
+       <img src="/assets/photo-glace.png" alt="glace" class="inclined-image glace-image"> 
+       <img src="/assets/photo-sandwich.png" alt="sandwich" class="inclined-image sandwich-image"> 
+       <img src="/assets/photo-miel.png" alt="miel" class="inclined-image miel-image"> 
+       <img src="/assets/photo-kabab.png" alt="kabeb" class="inclined-image kabeb-image"> 
+       <img src="/assets/photo-burger.png" alt="Burger2" class="burger2-image">
+       <img src="/assets/photo-boisson.png" alt="boisson" class="inclined-image boisson2-image">
+       <img src="/assets/photo-cake.png" alt="cake" class="inclined-image cake-image" style="width: 70px; ">
+       <img src="/assets/noodle-photo.png" alt="nodle" class="inclined-image nodle-image" style="width: 150px; ">
+       <img src="/assets/photo-slice.png" alt="nodle" class="inclined-image slice-image"  style="width: 120px;" >
+       <img src="/assets/photo-fastFood.png" alt="fastFood" class="inclined-image fastFood-image"  style="width: 120px;" >
+       
+       <!-- <img src="/assets/ligne3.png" alt="ligne3" class="inclined-image ligne3-image"style="width: 300px; " > -->
+       <img src="/assets/ligne7.png" alt="ligne7" class="inclined-image ligne7-image"style="width: 300px; " >
+       <img src="/assets/ligne7.png" alt="ligne7" class="inclined-image ligne8-image"style="width: 300px; " >
+       <img src="/assets/ligne7.png" alt="ligne7" class="inclined-image ligne9-image"style="width: 100px; " >
+       <!-- <img src="/assets/ligne4.png" alt="ligne3" class="inclined-image ligne4-image"style="width: 300px;" > -->
+       <!-- <img src="/assets/removebg1.png" alt="removebg1" class="inclined-image removebg1-image"  >
+       <img src="/assets/removebg2.png" alt="removebg2" class="inclined-image removebg2-image" style=" width: 40px; "  > -->
+       <!-- <img src="/assets/poivre.png" alt="poivre" class="inclined-image poivre-image"  > -->
+        </div>
+  </div>
+
+</div>
+
+
+  <!-- Header Section -->
+    <!-- <div class="creationfood-popup-header">
+      <h2 class="creationfood-title-section">Ajouter un nouveau produit</h2>
+      <h3 class="creationfood-subtitle-section">Veuillez remplir les détails ci-dessous</h3>
+      <span class="creationfood-red-dot"></span>
+      <button class="creationfood-close-button" (click)="hideCreationfoodPopup()">&times;</button>
+    </div> -->
+
+    <!-- Input Fields for Food Name and Description -->
+    <!-- <form (ngSubmit)="onCreationfoodSubmit()">
+      <div class="creationfood-input-container" style="margin-top: 25px;">
+        <div class="creationfood-input-wrapper">
+          <input type="text" id="food-name" placeholder="Nom du produit" class="creationfood-custom-input" [(ngModel)]="creationfood.name" name="name" required>
+        </div>
+      </div>
+      <div class="creationfood-input-container" style="margin-top: 10px;">
+        <div class="creationfood-input-wrapper">
+          <input type="text" id="food-description" placeholder="Description du produit" class="creationfood-custom-input" [(ngModel)]="creationfood.description" name="description" required>
+        </div>
+      </div>
+      <div class="creationfood-input-container" style="margin-top: 10px;">
+        <div class="creationfood-input-wrapper">
+          <input type="number" id="food-price" placeholder="Prix du produit" class="creationfood-custom-input no-spinner" [(ngModel)]="creationfood.price" name="price" required>
+        </div>
+      </div>
+      <div class="creationfood-input-container" style="margin-top: 10px;">
+        <div class="creationfood-input-wrapper">
+          <input type="text" id="food-category" placeholder="Catégorie du produit" class="creationfood-custom-input" [(ngModel)]="creationfood.category" name="category" required>
+          <button type="submit" class="creationfood-custom-button">
+            <svg width="16" height="16" viewBox="0 0 24 24" style="margin-top: 2px; margin-left:2px;">
+              <path fill="#FFF" d="M12 2L10.59 3.41 16.17 9H2V11H16.17L10.59 16.59L12 18L20 10L12 2Z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </form> -->
 
 <script>
 

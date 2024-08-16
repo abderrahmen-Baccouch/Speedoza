@@ -26,7 +26,19 @@ export class AdminSpaceComponent {
   isProductPercentagePopupVisible = false;
   isClientListPopupVisible = false;
   isCompanyListPopupVisible = false;
+  isCreationfoodPopupVisible = false;
 
+   // New methods for Creationfood
+   showCreationfoodPopup() {
+    this.isCreationfoodPopupVisible = true;
+    document.body.classList.add('blurred');
+  }
+
+  hideCreationfoodPopup() {
+    this.isCreationfoodPopupVisible = false;
+    document.body.classList.remove('blurred');
+  }
+  
   client = {
     name: '',
     email: '',

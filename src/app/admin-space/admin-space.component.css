@@ -3232,3 +3232,483 @@ body.blurred {
     }
   
   
+
+    /* creation food popup*/
+    .creationfood-popup-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+      }
+      
+      .creationfood-popup-content {
+        position: relative;
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        width: 70%;
+        height: 70%;
+        max-width: 900px;
+        max-height: 600px;
+        overflow: hidden;
+      }
+      
+      .inclined-popup {
+        position: absolute;
+        top: 55%;
+        left: 90%;
+        width: 80%;
+        height: 85%;
+        background: #bf5103;
+        transform: translate(-50%, -50%) rotate(-50deg); 
+        border-radius: 85px; 
+        z-index: 1;
+        box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.6);  
+        
+      }
+      
+      .inclined-content {
+        position: absolute;
+        top: 05%; 
+        left: 90%;
+        transform: translate(-50%, 0%);
+        z-index: 2; 
+    }
+    
+    .inclined-content img {
+        width: 100px; 
+        height: auto;
+    }
+    
+    .burger-image {
+        width: 60px; 
+        height: auto;
+        position: absolute;
+        bottom: 5%;
+        left: 90%; 
+        transform: translate(-50%, 0%);
+        z-index: 3;
+    }
+      
+    .pizza-image {
+        width: 60px; 
+        position: absolute;
+        top: 0px; 
+        left: 40%;
+        opacity: 0.6;
+    }
+
+    .salade-image{
+        width: 60px; 
+        position: absolute;
+        top: 0px; 
+        right: 10px;
+       
+    }
+    
+    .boisson-image{
+        width: 60px; 
+        position: absolute;
+        top: 50px; 
+        left:50px ;
+        opacity: 0.6;
+    }
+
+    .tacos-image{
+        width: 60px;
+        position: absolute;
+        top: 100px; 
+        left: -35px;
+        opacity: 0.4;
+    }
+
+    .frites-image{
+        width: 60px;
+        position: absolute;
+        top: 110px; 
+        left: -125px;
+        opacity: 0.4;
+    }
+
+    .chicken-image{
+        width: 60px;
+        position: absolute;
+        top: 100px; 
+        left: -200px;
+        opacity: 0.6;
+    }
+
+    .meat-image{
+        width: 70px;
+        position: absolute;
+        top: 170px; 
+        left: 10px;
+        opacity: 0.6;
+        
+    }
+
+    .spaghetti-image{
+        width: 70px;
+        position: absolute;
+        top: 220px; 
+        left: -70px;
+        opacity: 0.6;
+        
+    }
+
+    .glace-image{
+        width: 70px;
+        position: absolute;
+        top: 270px; 
+        left: -170px;
+        opacity: 0.6;
+    }
+
+    .sandwich-image{
+        width: 70px;
+        position: absolute;
+        top: 250px; 
+        left: -270px;
+        opacity: 0.6;
+    }
+
+    .miel-image{
+        width: 70px;
+        position: absolute;
+        top: 300px; 
+        left: 0px;
+        opacity: 0.6;
+    }
+    
+    .kabeb-image{
+        width: 70px;
+        position: absolute;
+        top: 350px; 
+        left: -120px;
+        opacity: 0.6;
+    } 
+
+    .burger2-image{
+
+        width: 60px; 
+        height: auto;
+        position: absolute;
+        top: 395px;
+        left: 110px; 
+        transform: translate(-50%, 0%);
+        z-index: 3;
+    
+    }
+
+    .boisson2-image{
+        width: 60px; 
+        position: absolute;
+        top: 460px; 
+        left: -30px ;
+        opacity: 0.6;
+
+    }
+
+    .cake-image{
+        width: 40px; 
+        position: absolute;
+        top: 430px; 
+        left: -110px ;
+        opacity: 0.6;
+    }
+
+    .nodle-image{
+        width: 150px; 
+        position: absolute;
+        top: 420px; 
+        left: -250px ;
+        opacity: 0.4;
+
+
+    }
+
+    .slice-image{
+
+        width: 80px; 
+        position: absolute;
+        top: 380px; 
+        left: -290px ;
+        opacity: 0.6;
+    }
+
+    .fastFood-image{
+        width: 80px; 
+        position: absolute;
+        top: 360px; 
+        left: -380px ;
+        opacity: 0.6;
+    }
+
+
+    .zarla-image {
+        position: absolute;
+        top: 80px; 
+        margin-left: 390px;
+        z-index: 500;
+    }
+    
+    .removebg1-image {
+        width: 80px; 
+        position: absolute;
+        top: 0px; 
+        left: -100px;
+        opacity: 0.6;
+        filter: blur(1px); 
+    }
+
+    .removebg2-image {
+       
+        position: absolute;
+        top: 60px; 
+        left: -300px;
+        opacity: 0.6;
+        filter: blur(1px); 
+    }
+
+    .poivre-image{
+        position: absolute;
+        top: -30px; 
+        left: -190px;
+        opacity: 0.6;
+        filter: blur(0.5px);
+        z-index: 1000; 
+    }
+
+   
+
+    .ligne4-image{
+        position: absolute;
+        top: 120px; 
+        left: -200px;
+        z-index: 1000; 
+    }
+
+    
+
+    .ligne7-image{
+        position: absolute;
+        top: 280px; 
+        left: -180px;
+        z-index: 1000; 
+        opacity: 0.3;
+    }
+
+    
+    .ligne8-image{
+        position: absolute;
+        top: -0px; 
+        left: -70px;
+        z-index: 1000; 
+        opacity: 0.3;
+        transform: rotate(-55deg);
+    }
+
+    .ligne9-image{
+        position: absolute;
+        top: 150px; 
+        left: -400px;
+        z-index: 1000; 
+        opacity: 0.6;
+        transform: rotate(-55deg);
+     
+    }
+
+   
+    .title-section2 {
+        font-family: 'Permanent Marker';
+        font-size: 25px;
+        margin-left: 30px;
+        margin-top: 5px;
+    
+    }
+
+    .food-items-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin-top: 20px;
+        margin-left: -500px;
+      }
+      
+    
+      .food-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .food-item img {
+        width: 40px;
+        height: auto;
+        border-radius: 50%;
+        background-color: #f0f0f0; 
+        padding: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+      }
+      
+      .food-item-text {
+        margin-top: 10px;
+        font-size: 14px;
+        color: #333;
+      }
+
+  
+    
+
+      .food-item-pizza {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+       
+        
+        
+    }
+    
+    .food-item-content-pizza {
+        display: flex;
+        align-items: center;
+        background-color: #ffe5e4; 
+        border-radius: 50px; 
+        padding: 15px 30px;  
+        border-radius: 50px; 
+        width: 130px;  
+        height: 35px;
+        box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1); 
+        background-color: blanchedalmond;
+    }
+
+    .pizzaClass {
+        display: flex;
+        align-items: center;
+        background-color: #ffffff; 
+        border-radius: 50px; 
+        padding: 15px 25px;  
+        width: 20px;  
+        height: 25px;
+        justify-content: center;
+        margin-left: 30px;
+    }
+    .pizzaClass1 {
+        display: flex;
+        align-items: center;
+        background-color: #ffffff; 
+        border-radius: 50px; 
+        padding: 15px 25px;  
+        width: 20px;  
+        height: 25px;
+        justify-content: center;
+        margin-left: 40px;
+    }
+    .food-item-image-pizza {
+        width: 45px; 
+        height: auto;
+        padding: 15px; 
+        padding: 10px;
+       
+    }
+   
+    .food-item-text-pizza {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .h3-pizza {
+        font-size: 16px; 
+        color: #333;
+        margin-bottom: -2px;
+        margin-left: 2px;
+        font-family: 'Outfit';
+       
+    }
+    
+    .p-pizza {
+        font-size: 14px; 
+        color: #666;
+        font-family: 'Outfit';
+        margin-top: -0px;
+    }
+   
+
+    .confirm-now-button {
+        background-color: rgb(255, 255, 255);
+        color: #000000; 
+        padding: 10px 20px;
+        border: none; 
+        border-radius: 50px; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2); 
+        cursor: pointer; 
+        font-size: 16px; 
+        font-weight: 500;
+        font-family: 'Outfit'; 
+        margin-top: -50px;
+       
+    }
+    
+    .confirm-icon-container {
+        background-color: rgb(37, 176, 104);
+        border-radius: 50%; 
+        padding: 8px; 
+        margin-left: -5px; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+    }
+    
+    .confirm-icon {
+        width: 13px; 
+        height: auto; 
+    }
+
+
+    .category-containers {
+        display: flex;
+        align-items: center;
+        font-family: 'Poppins', sans-serif; 
+        margin-left: 30px;
+        margin-top: -20px;
+    }
+    
+    .orange-dots {
+        width: 10px; 
+        height: 10px;
+        background-color: #FFA500; 
+        border-radius: 50%; 
+        margin-right: 8px; 
+    }
+    
+    .category-texts {
+        font-size: 16px; 
+        color: #333333; 
+    }
+
+
+    .buttons-containers {
+        display: flex;
+        align-items: center;
+        font-family: 'Poppins', sans-serif; 
+        margin-left: 30px;
+        margin-top: 20px;
+    }
+    
+    .buttons-texts {
+        font-size: 16px; 
+        color: #333333; 
+    }
+    
