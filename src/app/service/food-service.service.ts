@@ -10,8 +10,18 @@ export class FoodCreationService {
 
   constructor(private http: HttpClient) {}
 
+  private getHeaders(): HttpHeaders {
+    const token = localStorage.getItem('token');
+    return new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  }
+
   createFood(formData: FormData): Observable<any> {
-    const headers = new HttpHeaders(); // No content type needed as we use FormData
+    const headers = this.getHeaders(); // Attach the Authorization header
     return this.http.post(`${this.apiUrl}/createFood`, formData, { headers });
   }
+
+  // createFood(formData: FormData): Observable<any> {
+  //   const headers = new HttpHeaders(); // No content type needed as we use FormData
+  //   return this.http.post(`${this.apiUrl}/createFood`, formData, { headers });
+  // }
 }
