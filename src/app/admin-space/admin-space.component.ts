@@ -5,10 +5,11 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { LivreurService } from '../service/livreur.service';
 import { CompanyService } from '../service/company.service';
 import { Router } from '@angular/router'; 
-import { AuthService } from '../service/services.service';
-import { FoodService } from '../service/food.service';
+import { AuthService } from '../service/services.service';; 
 import { MatDialog } from '@angular/material/dialog';
 import { ProductPercentage, ProductPercentageService } from '../service/product-percentage.service';
+import { FoodCreationService } from '../service/food-service.service';
+import { FoodService } from '../service/food.service';
 
 @Component({
   selector: 'app-admin-space',
@@ -54,7 +55,16 @@ export class AdminSpaceComponent {
     vehicleType: '',
     availabilityStatus: ''
   };
+  selectedItems: string[] = [];
 
+  toggleSelection(item: string) {
+    const index = this.selectedItems.indexOf(item);
+    if (index === -1) {
+      this.selectedItems.push(item);
+    } else {
+      this.selectedItems.splice(index, 1);
+    }
+  }
 
   file: File | null = null;
   fileName: string = '';
@@ -90,7 +100,72 @@ export class AdminSpaceComponent {
     description: ''
   };
   
-  constructor(private clientService: ClientService, private livreurService: LivreurService, private companyService: CompanyService,private router: Router,  private authService: AuthService ,  private foodService: FoodService , private dialog: MatDialog, private productPercentageService: ProductPercentageService) { }
+  constructor(private foodCreationService: FoodCreationService , private foodService : FoodService, private clientService: ClientService, private livreurService: LivreurService, private companyService: CompanyService,private router: Router,  private authService: AuthService , private dialog: MatDialog, private productPercentageService: ProductPercentageService) { }
+
+
+
+
+
+
+
+
+
+  foodName: string = '';
+  foodDescription: string = '';
+  selectedFoodCategoryId: string = '';
+  foodImagePreviews: string[] = [];
+  foodSelectedFiles: File[] = [];
+
+
+  selectFoodCategory(categoryId: string): void {
+    this.selectedFoodCategoryId = categoryId; // Set the selected food category ID
+  }
+
+  onFoodImageChange(event: any): void {
+    const files = event.target.files;
+    this.foodSelectedFiles = files;
+    
+    this.foodImagePreviews = [];
+    for (let file of files) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.foodImagePreviews.push(e.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  submitFoodCreationForm(): void {
+    const formData = new FormData();
+    formData.append('name', this.foodName);
+    formData.append('description', this.foodDescription);
+    formData.append('cateogryId', this.selectedFoodCategoryId);
+
+    for (let file of this.foodSelectedFiles) {
+      formData.append('photos', file);
+    }
+
+    this.foodCreationService.createFood(formData).subscribe(
+      response => {
+        console.log('Food item created successfully', response);
+        this.showToast('Enregistré avec Succès');
+        this.hideCreationfoodPopup();
+      },
+      error => {
+        console.error('Error creating food item', error);
+        this.showToastError('Existe déjà');
+      }
+    );
+  }
+
+
+
+
+
+
+
+
+
 
 
 
