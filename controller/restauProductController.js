@@ -3,6 +3,7 @@
 import User from "../models/user.js";
 import Category from "../models/category.js";
 import RestauProduct from "../models/RestauProduct.js";
+import Food from "../models/food.js";
 
 export async function createRestauProduct(req, res) {
   const {
@@ -13,18 +14,23 @@ export async function createRestauProduct(req, res) {
     maxPrice,
     ingredients,
     userId,
+    foodId,
     categoryId,
   } = req.body;
 
   try {
     const user = await User.findById({_id:userId});
     const category = await Category.findById({_id:categoryId});
+    const food = await Food.findById({_id:foodId});
     
     if (!category) {
       return res.status(404).json({ message: "Category not found" });
     }
     if (!user) {
       return res.status(404).json({ message: "User not found" });
+    }
+    if(!food){
+      return res.status(404).json({ message: "Food not found" });
     }
 
     const newRestauProduct = new RestauProduct({
@@ -34,6 +40,7 @@ export async function createRestauProduct(req, res) {
       maxPrice,
       ingredients,
       userId,
+      foodId,
       categoryId,
     });
 
@@ -54,11 +61,8 @@ export async function getAllRestauProducts(req, res) {
     .populate("userId") // Populate user details as needed
     .populate({
       path: 'categoryId',
-      populate: {
-        path: 'foods',  // Populate foods within categoryId
-        model: 'Food'   // Replace with the actual model name for the Food schema
-      }
-    })
+      
+    }). populate('foodId');
     res.status(200).json(restauProducts);
   } catch (error) {
     console.error(error);
@@ -75,12 +79,14 @@ export async function updateRestauProduct(req, res) {
     maxPrice,
     ingredients,
     userId,
+    foodId,
     categoryId,
   } = req.body;
 
   try {
     const user = await User.findById({_id:userId});
     const category = await Category.findById({_id:categoryId});
+    const food = await Food.findById({_id:foodId});
     
     if (!category) {
       return res.status(404).json({ message: "Category not found" });
@@ -88,12 +94,17 @@ export async function updateRestauProduct(req, res) {
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
+    if(!food){
+      return res.status(404).json({ message: "Food not found" });
+    }
 
 
     let restauProduct = await RestauProduct.findById(id);
     if (!restauProduct) {
       return res.status(404).json({ message: "RestauProduct not found" });
     }
+
+    restauProduct.foodId = foodId || restauProduct.foodId;
 
     restauProduct.details = details || restauProduct.details;
     restauProduct.minPrice = minPrice || restauProduct.minPrice;
@@ -137,11 +148,9 @@ export async function getRestauProductById(req, res) {
     .populate("userId") // Populate user details as needed
     .populate({
       path: 'categoryId',
-      populate: {
-        path: 'foods',  // Populate foods within categoryId
-        model: 'Food'   // Replace with the actual model name for the Food schema
-      }
-    })
+      
+    }).
+    populate('foodId');
     if (!restauProduct) {
       return res.status(404).json({ message: "RestauProduct not found" });
     }
@@ -158,13 +167,10 @@ export async function getRestauProductByUserId(req, res) {
   try {
     const restauProducts = await RestauProduct.find({ userId })
       .populate({
-        path: 'categoryId',
-        populate: {
-          path: 'foods',  // Populate foods within categoryId
-          model: 'Food'   // Replace with the actual model name for the Food schema
-        }
+        path: 'categoryId'
+       
       })
-      .populate('userId'); // Populate user details as needed
+      .populate('userId').populate('foodId');; // Populate user details as needed
 
     if (!restauProducts.length) {
       return res.status(404).json({ message: "RestauProducts not found" });

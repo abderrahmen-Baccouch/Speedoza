@@ -1,11 +1,9 @@
 import mongoose from "mongoose";
 
 const restauProductSchema = new mongoose.Schema({
- 
   categoryId: {
-    type:mongoose.Schema.Types.ObjectId,
-    ref:'Category',
-
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Category",
   },
   details: {
     type: String,
@@ -27,11 +25,14 @@ const restauProductSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  
+
+  foodId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Food",
+  },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
-    
   },
 });
 
