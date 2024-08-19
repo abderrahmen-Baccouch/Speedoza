@@ -6,13 +6,12 @@ import RestauProduct from "../models/RestauProduct.js";
 
 export async function createRestauProduct(req, res) {
   const {
-    name,
+    
     details,
     minPrice,
     mediumPrice,
     maxPrice,
     ingredients,
-    imagesBase64,
     userId,
     categoryId,
   } = req.body;
@@ -29,13 +28,11 @@ export async function createRestauProduct(req, res) {
     }
 
     const newRestauProduct = new RestauProduct({
-      name,
       details,
       minPrice,
       mediumPrice,
       maxPrice,
       ingredients,
-      imagesBase64,
       userId,
       categoryId,
     });
@@ -72,13 +69,11 @@ export async function getAllRestauProducts(req, res) {
 export async function updateRestauProduct(req, res) {
   const { id } = req.params;
   const {
-    name,
     details,
     minPrice,
     mediumPrice,
     maxPrice,
     ingredients,
-    imagesBase64,
     userId,
     categoryId,
   } = req.body;
@@ -100,13 +95,11 @@ export async function updateRestauProduct(req, res) {
       return res.status(404).json({ message: "RestauProduct not found" });
     }
 
-    restauProduct.name = name || restauProduct.name;
     restauProduct.details = details || restauProduct.details;
     restauProduct.minPrice = minPrice || restauProduct.minPrice;
     restauProduct.mediumPrice = mediumPrice || restauProduct.mediumPrice;
     restauProduct.maxPrice = maxPrice || restauProduct.maxPrice;
     restauProduct.ingredients = ingredients || restauProduct.ingredients;
-    restauProduct.imagesBase64 = imagesBase64 || restauProduct.imagesBase64;
     restauProduct.userId = userId || restauProduct.userId;
     restauProduct.categoryId = categoryId || restauProduct.categoryId;
 
