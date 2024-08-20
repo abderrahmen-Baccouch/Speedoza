@@ -149,7 +149,12 @@ export async function getRestauProductByUserId(req, res) {
 
   try {
     const restauProducts = await RestauProduct.find({ userId })
-     .populate('foodId')
+     .populate({
+      path: 'foodId',
+      populate: {
+        path:'category'
+      }
+     })
       .populate('userId'); // Populate user details as needed
 
     if (!restauProducts.length) {
