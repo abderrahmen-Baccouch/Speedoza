@@ -44,10 +44,12 @@ export async function createFood(req, res) {
 
 export async function getAllFoods (req, res)  {
     try {
-        const foods = await Food.find();
+        const foods = await Food.find().populate('category');
         res.status(200).json(foods);
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Server Error" });
     }
 };
+
+
