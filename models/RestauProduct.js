@@ -1,10 +1,7 @@
 import mongoose from "mongoose";
 
 const restauProductSchema = new mongoose.Schema({
-  categoryId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Category",
-  },
+ 
   details: {
     type: String,
   },
