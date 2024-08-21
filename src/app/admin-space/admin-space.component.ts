@@ -607,5 +607,11 @@ updatePlaceholders() {
   }
 }
 
+navigateToRestaurantProfile() {
+  this.router.navigate(['/restaurant-profile']);
+}
+
 
 }
+
+

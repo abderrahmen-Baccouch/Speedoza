@@ -6,12 +6,13 @@ import { RightContentComponent } from './right-content/right-content.component';
 import { LeftContentComponent } from './left-content/left-content.component';
 import { AuthService } from './service/services.service';
 import { AdminSpaceComponent } from './admin-space/admin-space.component';
+import { RestaurantProfileComponent } from './restaurant-profile/restaurant-profile.component';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, TopBarComponent, RightContentComponent, LeftContentComponent,AdminSpaceComponent],
+  imports: [RouterOutlet, CommonModule, TopBarComponent, RightContentComponent, LeftContentComponent,AdminSpaceComponent, RestaurantProfileComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
