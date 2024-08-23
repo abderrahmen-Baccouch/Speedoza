@@ -1,6 +1,13 @@
 <app-top-bar></app-top-bar>
 
-<div *ngIf="!isLoggedIn" class="main-container">
+
+
+<div *ngIf="!isLoggedIn && !isLoading ">
+  <router-outlet></router-outlet>
+</div>
+
+
+<div *ngIf="!isLoggedIn " class="main-container">
   <div class="left-container">
     <div class="image-overlay">
       <div class="image-wrapper image1">
@@ -20,8 +27,8 @@
   </div>
 </div>
 
-<div *ngIf="isLoggedIn">
-  <router-outlet></router-outlet>
-  
-</div>
+<div *ngIf="isLoggedIn ">  
+ 
+ <app-admin-space></app-admin-space>
 
+</div>

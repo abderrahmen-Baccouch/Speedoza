@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { RightContentComponent } from './right-content/right-content.component';
@@ -19,12 +19,14 @@ import { RestaurantProfileComponent } from './restaurant-profile/restaurant-prof
 export class AppComponent {
   title = 'WicoProject';
   isLoggedIn = false;
-
-  constructor(private authService: AuthService) {
+  isLoading = false; 
+  isSponsorActive = false; 
+  constructor(private authService: AuthService, private router: Router) {
     this.authService.isLoggedIn.subscribe((loggedIn: boolean) => {
       this.isLoggedIn = loggedIn;
+      this.isLoading = this.isLoading;
     });
   }
- 
- 
+
+
 }

@@ -15,7 +15,7 @@ export class TopBarComponent {
   logout() {
     console.log('Logout method called in AuthService');
     this.authService.logout(); 
-    this.router.navigate(['/login']);
+    this.router.navigate(['/restaurant-profile']);
   }
 
 }

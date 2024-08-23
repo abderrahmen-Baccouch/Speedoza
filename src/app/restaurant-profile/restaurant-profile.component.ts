@@ -1,6 +1,7 @@
 // restaurant-profile.component.ts
 import { Component } from '@angular/core';
-
+import { Router } from '@angular/router';
+import { AuthService } from '../service/services.service'; 
 @Component({
   selector: 'app-restaurant-profile',
   templateUrl: './restaurant-profile.component.html',
@@ -8,5 +9,10 @@ import { Component } from '@angular/core';
   standalone: true,
 })
 export class RestaurantProfileComponent {
-  // Add any logic here if needed
+
+constructor(private router: Router, private authService: AuthService ) {}
+goToLogin() { 
+  this.router.navigate(['/login']);
+}
+
 }

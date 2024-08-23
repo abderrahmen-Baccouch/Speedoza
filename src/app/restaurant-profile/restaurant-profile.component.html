@@ -19,12 +19,20 @@
             <li class="nav-item">About us</li>
            
         </ul>
-        <li class="nav-item contact-item">
-            <a href="tel:+12025550104" class="contact-number">+1 202-555-0104</a>
-        </li>
+        <div class="address-container">
+            <div class="address-input">
+                <img src="assets/location-line-icon-png.png" alt="Location Icon" class="location-icon">
+                <span>What's your address?</span>
+            </div>
+            <button class="current-location-button">
+                <img src="assets/source.png" alt="Location Arrow Icon" class="location-arrow-icon">
+                Use current location
+            </button>
+        </div>
+          
     </div>
 
-
+   
     <div class="navbar-end">
         <div class="account-dropdown">
           <span>Account</span>
@@ -38,8 +46,7 @@
       
     </div>
 
-   
-      
+  
       
 
 </nav>
@@ -132,7 +139,7 @@
 
 </div>
 <div class="icon-button-wrapper">
-    <button class="custom-icon-button">
+    <button class="custom-icon-button" (click)="goToLogin()">
         <div class="arc-wrapper">
             <div class="arc-shape"></div>
             <div class="circle-content">
@@ -162,31 +169,8 @@
 
 
 
-<div class="address-container">
-    <div class="address-input">
-        <img src="assets/location-line-icon-png.png" alt="Location Icon" class="location-icon">
-        <span>What's your address?</span>
-    </div>
-    <button class="current-location-button">
-        <img src="assets/source.png" alt="Location Arrow Icon" class="location-arrow-icon">
-        Use current location
-    </button>
-</div>
 
 
-    <div class="custom-button-container">
-        <button class="features-button">PROFILE</button>
-    </div>
-   
-    <!-- <div class="command-card-container">
-        <div class="card-stack">
-            <img src="assets/source.png" alt="Location Arrow Icon" class="location-arrow-icon"> </div>
-        <div class="command-text">
-            <h3>Helps You With 1000+ Commands You Want</h3>
-            <p>Lunar could give you every information and learns from your requests</p>
-        </div>
-    </div>
-     -->
 
 
 

@@ -5,11 +5,12 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { LivreurService } from '../service/livreur.service';
 import { CompanyService } from '../service/company.service';
 import { Router } from '@angular/router'; 
-import { AuthService } from '../service/services.service';; 
+import { AuthService } from '../service/services.service'; 
 import { MatDialog } from '@angular/material/dialog';
 import { ProductPercentage, ProductPercentageService } from '../service/product-percentage.service';
 import { FoodCreationService } from '../service/food-service.service';
 import { FoodService } from '../service/food.service';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-admin-space',
@@ -28,6 +29,7 @@ export class AdminSpaceComponent {
   isClientListPopupVisible = false;
   isCompanyListPopupVisible = false;
   isCreationfoodPopupVisible = false;
+ 
 
    // New methods for Creationfood
    showCreationfoodPopup() {
@@ -100,13 +102,7 @@ export class AdminSpaceComponent {
     description: ''
   };
   
-  constructor(private foodCreationService: FoodCreationService , private foodService : FoodService, private clientService: ClientService, private livreurService: LivreurService, private companyService: CompanyService,private router: Router,  private authService: AuthService , private dialog: MatDialog, private productPercentageService: ProductPercentageService) { }
-
-
-
-
-
-
+  constructor( private foodCreationService: FoodCreationService , private foodService : FoodService, private clientService: ClientService, private livreurService: LivreurService, private companyService: CompanyService,private router: Router,  private authService: AuthService , private dialog: MatDialog, private productPercentageService: ProductPercentageService ) { }
 
 
 
