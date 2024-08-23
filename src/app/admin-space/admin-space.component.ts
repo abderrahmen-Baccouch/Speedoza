@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener } from '@angular/core';
+import { ChangeDetectorRef, Component, HostListener } from '@angular/core';
 import { ClientService, Client } from '../service/client.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { LivreurService } from '../service/livreur.service';
@@ -11,6 +11,8 @@ import { ProductPercentage, ProductPercentageService } from '../service/product-
 import { FoodCreationService } from '../service/food-service.service';
 import { FoodService } from '../service/food.service';
 import { AppComponent } from '../app.component';
+import { BehaviorSubject } from 'rxjs';
+import { NavigationService } from '../navigation.service';
 
 @Component({
   selector: 'app-admin-space',
@@ -102,7 +104,17 @@ export class AdminSpaceComponent {
     description: ''
   };
   
-  constructor( private foodCreationService: FoodCreationService , private foodService : FoodService, private clientService: ClientService, private livreurService: LivreurService, private companyService: CompanyService,private router: Router,  private authService: AuthService , private dialog: MatDialog, private productPercentageService: ProductPercentageService ) { }
+  constructor( 
+    private foodCreationService: FoodCreationService , 
+    private foodService : FoodService, 
+    private clientService: ClientService, 
+    private livreurService: LivreurService, 
+    private companyService: CompanyService,
+    private router: Router, 
+    private authService: AuthService , 
+    private dialog: MatDialog, 
+    private productPercentageService: ProductPercentageService,
+    private navigationService: NavigationService) { }
 
 
 
@@ -606,6 +618,11 @@ updatePlaceholders() {
 navigateToRestaurantProfile() {
   this.router.navigate(['/restaurant-profile']);
 }
+
+
+  navigateToSponsoringRestaurant() {
+    this.navigationService.setSponsorActive(true);
+  }
 
 
 }

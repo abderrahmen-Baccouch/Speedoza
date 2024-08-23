@@ -10,6 +10,7 @@ export const routes: Routes = [
   { path: 'restaurant-profile', component: RestaurantProfileComponent }, 
   { path: 'login', component: LeftContentComponent },
   { path: 'admin-space', component: AdminSpaceComponent },
+  { path: 'sponsoring-restaurant', component: SponsoringRestaurantComponent, outlet: 'sponsor' },
   { path: '**', redirectTo: 'restaurant-profile' } 
   
 ];

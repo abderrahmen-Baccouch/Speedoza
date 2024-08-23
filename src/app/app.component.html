@@ -1,10 +1,14 @@
 <app-top-bar></app-top-bar>
 
+<div *ngIf="isSponsorActive">
+  <router-outlet name="sponsor"></router-outlet> 
+</div>
 
 
 <div *ngIf="!isLoggedIn && !isLoading ">
   <router-outlet></router-outlet>
 </div>
+
 
 
 <div *ngIf="!isLoggedIn " class="main-container">
@@ -27,7 +31,7 @@
   </div>
 </div>
 
-<div *ngIf="isLoggedIn ">  
+<div *ngIf="isLoggedIn && !isSponsorActive ">  
  
  <app-admin-space></app-admin-space>
 
