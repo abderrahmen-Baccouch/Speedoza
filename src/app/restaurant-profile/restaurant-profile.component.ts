@@ -2,6 +2,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../service/services.service'; 
+import { NavigationService } from '../navigation.service';
 @Component({
   selector: 'app-restaurant-profile',
   templateUrl: './restaurant-profile.component.html',
@@ -10,7 +11,7 @@ import { AuthService } from '../service/services.service';
 })
 export class RestaurantProfileComponent {
 
-constructor(private router: Router, private authService: AuthService ) {}
+constructor(private router: Router, private authService: AuthService ,  private navigationService: NavigationService) {}
 goToLogin() { 
   this.router.navigate(['/login']);
 }

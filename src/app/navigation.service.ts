@@ -9,6 +9,9 @@ export class NavigationService {
   private isSponsorActiveSubject = new BehaviorSubject<boolean>(false);
   isSponsorActive$ = this.isSponsorActiveSubject.asObservable();
 
+  private isRestaurantsActiveSubject = new BehaviorSubject<boolean>(false);
+  isRestaurantsActive$ = this.isRestaurantsActiveSubject.asObservable();
+
   constructor(private router: Router) {}
 
   setSponsorActive(active: boolean) {
@@ -17,4 +20,6 @@ export class NavigationService {
       this.router.navigate([{ outlets: { sponsor: ['sponsoring-restaurant'] } }]);
     }
   }
+
+ 
 }

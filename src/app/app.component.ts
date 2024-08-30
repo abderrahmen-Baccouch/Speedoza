@@ -22,6 +22,7 @@ export class AppComponent {
   isLoggedIn = false;
   isLoading = false; 
   isSponsorActive = false;
+  isRestaurantsActive = false;
 
   
   constructor(private authService: AuthService, private router: Router, private navigationService: NavigationService) {
@@ -31,20 +32,29 @@ export class AppComponent {
     });
     this.navigationService.isSponsorActive$.subscribe(active => {
       this.isSponsorActive = active;
+      if (active) {
+        this.isRestaurantsActive = false;
+      }
     });
+
+    this.navigationService.isRestaurantsActive$.subscribe(active => {
+      this.isRestaurantsActive = active;
+      if (active) {
+        this.isSponsorActive = false;
+      }
+    });
+  
   }
 
   ngOnInit() {
-   
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-      
         if (!event.urlAfterRedirects.includes('sponsoring-restaurant')) {
-        
           this.navigationService.setSponsorActive(false);
         }
+
+      
       }
     });
   }
- 
 }

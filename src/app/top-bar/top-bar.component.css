@@ -110,3 +110,30 @@
     display: none;
   }
 }
+.pink-circle {
+  margin-right: 20px;
+  width: 40px;
+  height: 40px;
+  background-color: rgb(255, 235, 233);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pink-circle img {
+  width: 20px;
+  margin-right: 0;
+  margin-top: 0;
+}
+
+.pink-circle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.pink-circle:active {
+  transform: scale(0.95);
+}

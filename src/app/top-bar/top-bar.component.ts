@@ -4,6 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router'; 
 import { AuthService } from '../service/services.service';
 import { NavigationService } from '../navigation.service';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-top-bar',
   standalone: true,
@@ -12,7 +13,7 @@ import { NavigationService } from '../navigation.service';
   styleUrl: './top-bar.component.css'
 })
 export class TopBarComponent {
-  constructor(private router: Router,  private authService: AuthService , private navigationService: NavigationService) { }
+  constructor(private router: Router,  private authService: AuthService , private navigationService: NavigationService,private location: Location) { }
 
   logout() {
     console.log('Logout method called in AuthService');
@@ -20,5 +21,12 @@ export class TopBarComponent {
     this.authService.logout(); 
     this.router.navigate(['/restaurant-profile']);
   }
-
+  navigateToSponsoringRestaurant() {
+    this.navigationService.setSponsorActive(true);
+  }
+  goBack() {
+    console.log('Going back to the previous page');
+    this.location.back();
+  }
 }
+
