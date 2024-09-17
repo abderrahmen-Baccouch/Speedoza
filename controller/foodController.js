@@ -1,6 +1,9 @@
 
 import Food from '../models/food.js';
-
+//API GET LIST DESCRIPTION AND FOOD
+//SERVER AS ENDPOINT 
+//CONST.DART CLASS API ROUTES
+///api/foods/get
 
 export async function createFood (req, res)  {
     const { name, description } = req.body;
