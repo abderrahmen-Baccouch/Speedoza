@@ -1,0 +1,30 @@
+<nav class="navbar">
+    <div class="navbar-brand" >
+      <img src="assets/logo.png" alt="Logo" class="logo">
+      <div class="brand-text">
+        <span class="brand-name">Wico Delivery</span>
+        <span class="sub-brand-name">administration</span> 
+      </div>
+    </div>
+
+    
+    <div class="navbar-items">
+
+      <button class="nav-item" (click)="navigateToSponsoringRestaurant()">
+        Sponsoring<span class="dropdown-icon">▼</span>
+      </button>
+      
+      <button class="nav-item" (click)="goBack()">Retour <span class="dropdown-icon">▼</span></button>
+
+
+      <button class="nav-item">Comment ça marche ? <span class="dropdown-icon">▼</span></button>
+      <button class="nav-item">Assistance <span class="dropdown-icon">▼</span></button>
+      <div class="flag-container">
+        <img src="assets/tunisie-flag.png" alt="Tunisie Flag" class="flag">
+      </div>
+      <button mat-icon-button class="menu-button" (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
+    </div>
+  </nav>
+  

@@ -1,0 +1,93 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color:   #f5f3f0;    
+    position: relative; 
+    overflow: hidden;
+  }
+  
+  .main-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 100vh;
+    padding: 20px;
+
+  }
+  
+  .left-container {
+    flex: 1;
+    position: relative; 
+    background-color: #f5f3f0;    
+    padding: 20px ;
+    margin-top: -110px;
+  }
+  .container{  
+    margin-top: -150px ;
+    margin-left: 130px;
+
+  }
+  
+  .image-overlay {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100%;
+    padding-left: 50px;
+  }
+  
+  .image-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; 
+  }
+  
+  .image-small {
+    width: 100px; 
+    height: auto;
+    opacity: 0.1; 
+    margin-right: 10px;
+  }
+  
+  .right-container {
+    flex: 1;
+  }
+  
+  .content {
+    display: flex;
+    height: 100vh; 
+  }
+  
+  .image1 {
+    top: 20px;
+    left: 50px; 
+    width: 130px; 
+    transform: rotate(15deg);
+    margin-left: 450px;
+    margin-top: 110px;
+    
+  }
+
+  .image2 {
+    top: 20px;
+    left: 50px; 
+    width: 130px; 
+    margin-left: 700px;
+  }
+
+  .background-image {
+    position: absolute;
+    top: 460px;
+    left: -20px;
+    width: 100px; 
+    height: 100px; 
+    background: url('assets/food6.png') no-repeat; 
+    background-size: contain; 
+    opacity: 0.1; 
+    z-index: 0; 
+    transform: rotate(-30deg);
+}
+

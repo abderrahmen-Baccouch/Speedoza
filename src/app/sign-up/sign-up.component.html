@@ -1,0 +1,24 @@
+<div class="signup-container">
+    <img src="assets/logo2.png" alt="Icon" class="signup-login-icon">
+    <h2 class="signup-login-title">Créer un compte</h2>
+    <form (ngSubmit)="onSignUp(signUpForm)" #signUpForm="ngForm">
+      <div class="signup-form-group">
+        <label for="signup-email">E-mail de l'utilisateur</label>
+        <input type="email" id="signup-email" name="email" class="signup-form-control" placeholder="admin@example.com" required [(ngModel)]="signUpEmail" ngModel>
+        <span class="signup-error-message">Ce champ est obligatoire</span>
+      </div>
+      <div class="signup-form-group">
+        <label for="signup-password">Mot de passe</label>
+        <input type="password" id="signup-password" name="password" class="signup-form-control" placeholder="8 caractères au minimum" required [(ngModel)]="signUpPassword" ngModel>
+        <span class="signup-error-message">Ce champ est obligatoire</span>
+      </div>
+      <div class="signup-form-group">
+        <label for="confirm-password">Confirmez le mot de passe</label>
+        <input type="password" id="confirm-password" name="confirm-password" class="signup-form-control" placeholder="8 caractères au minimum" required [(ngModel)]="confirmPassword" ngModel>
+        <span class="signup-error-message">Ce champ est obligatoire</span>
+      </div>
+      <button type="submit" class="signup-btn-login">S'inscrire</button>
+    </form>
+    <p class="signup-text">Vous avez déjà un compte ? <a href="#" (click)="showLogin()">Connexion</a></p>
+  </div>
+  

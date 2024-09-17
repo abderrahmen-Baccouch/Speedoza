@@ -1,0 +1,76 @@
+.right-content {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 50%;
+  height: 100vh; 
+  background: linear-gradient(to bottom, #f60, #ff9933); 
+  clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1; 
+}
+
+.right-content-inner {
+  text-align: center;
+  color: white;
+}
+
+.right-content-inner h1 {
+  font-size: 2.5em;
+  margin: 0;
+}
+
+.centered-image {
+  width: 70%;
+  margin: 20px 0 0 80px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.logo-image {
+  width: 50px;
+  margin-right: 10px;
+}
+
+.logo-container span {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: white;
+}
+
+@font-face {
+  font-family: 'Potato Sans Black';
+  src: url('/assets/fonts/PotatoSans-Black.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.styled-text {
+  font-family: 'Potato Sans Black', sans-serif;
+  font-size: 3em;
+  font-weight: normal;
+  text-transform: uppercase;
+  color: white;
+  text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1); 
+  margin: 0;
+  padding-left: 80px; 
+  margin-top: 100px; 
+}
+
+.text-wrapper {
+  margin-top: 100px; 
+}
+
+
+@media screen and (max-width: 720px) {
+  .right-content {
+    display: none;
+  }
+}
